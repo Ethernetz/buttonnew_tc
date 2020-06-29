@@ -1401,8 +1401,29 @@
                         "text": true
                     }
                 },
-                "icon": {
-                    "displayName": "Icon URL (optional)",
+                "iconA": {
+                    "displayName": "Icon URL",
+                    "description": "Icon URL for the tenth tile",
+                    "type": {
+                        "text": true
+                    }
+                },
+                "iconS": {
+                    "displayName": "Icon URL",
+                    "description": "Icon URL for the tenth tile",
+                    "type": {
+                        "text": true
+                    }
+                },
+                "iconU": {
+                    "displayName": "Icon URL",
+                    "description": "Icon URL for the tenth tile",
+                    "type": {
+                        "text": true
+                    }
+                },
+                "iconH": {
+                    "displayName": "Icon URL",
                     "description": "Icon URL for the tenth tile",
                     "type": {
                         "text": true

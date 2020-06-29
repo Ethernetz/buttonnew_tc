@@ -146,8 +146,10 @@ export class Visual implements IVisual {
                     delete settings.effects[effectSettingsKeys[i]]
 
        
-        if (!this.visualSettings.content.icons)
-                delete settings.content.icon
+        if (!this.visualSettings.content.icons){
+            delete settings.content[getCorrectPropertyStateName(settings.content.state, "icon")]
+        }
+
 
         let iconPlacement = settings.icon[getCorrectPropertyStateName(settings.icon.state, 'placement')] as IconPlacement
         if (iconPlacement == IconPlacement.left) {
@@ -224,7 +226,7 @@ export class Visual implements IVisual {
         let isSelected: boolean = this.selectionManagerUnbound.getSelectionIndexes().indexOf(0) > -1
         genericsCollection.tilesData = [{
             text: isSelected ? this.visualSettings.content.textS : this.visualSettings.content.textU ,
-            iconURL: this.visualSettings.content.icons ? this.visualSettings.content.icon : "", 
+            iconURL: isSelected ? this.visualSettings.content.iconS : this.visualSettings.content.iconU,
             contentFormatType: this.visualSettings.icon.icons ? ContentFormatType.text_icon : ContentFormatType.text,
             isSelected: isSelected,
             isHovered: this.hoveredIndex == 0

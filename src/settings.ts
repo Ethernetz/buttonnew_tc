@@ -57,12 +57,15 @@ export class ContentSettings{
   public icons: boolean = false
 
   public textA: string = ""
-  public textS: string = "Button Text All"
-  public textU: string = "Button Text All"
-  public textH: string = "Button Text Allr"
+  public textS: string = "Button Text"
+  public textU: string = "Button Text"
+  public textH: string = "Button Text"
 
 
-  public icon: string = ""
+  public iconA: string = ""
+  public iconS: string = ""
+  public iconU: string = ""
+  public iconH: string = ""
 }
 
 export class MeasuresSettings{
