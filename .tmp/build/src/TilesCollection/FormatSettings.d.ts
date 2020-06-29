@@ -3,6 +3,8 @@ import { AlignmentType, TileSizingType, TileLayoutType, TileShape, Direction, Ic
 export declare class FormatSettings {
     tile: TileSettings;
     text: TextSettings;
+    textPrimary: TextPrimarySettings;
+    textSecondary: TextSecondarySettings;
     layout: LayoutSettings;
     effect: EffectSettings;
     icon: IconSettings;
@@ -29,6 +31,70 @@ export declare class TileSettings {
     transparencyH: number;
 }
 export declare class TextSettings {
+    state: State;
+    hoverStyling: boolean;
+    colorA: string;
+    colorS: string;
+    colorU: string;
+    colorH: string;
+    alignmentA: AlignmentType;
+    alignmentS: AlignmentType;
+    alignmentU: AlignmentType;
+    alignmentH: AlignmentType;
+    fontSizeA: number;
+    fontSizeS: number;
+    fontSizeU: number;
+    fontSizeH: number;
+    fontFamilyA: string;
+    fontFamilyS: string;
+    fontFamilyU: string;
+    fontFamilyH: string;
+    hmarginA: number;
+    hmarginS: number;
+    hmarginU: number;
+    hmarginH: number;
+    bmarginA: number;
+    bmarginS: number;
+    bmarginU: number;
+    bmarginH: number;
+    transparencyA: number;
+    transparencyS: number;
+    transparencyU: number;
+    transparencyH: number;
+}
+export declare class TextPrimarySettings {
+    state: State;
+    hoverStyling: boolean;
+    colorA: string;
+    colorS: string;
+    colorU: string;
+    colorH: string;
+    alignmentA: AlignmentType;
+    alignmentS: AlignmentType;
+    alignmentU: AlignmentType;
+    alignmentH: AlignmentType;
+    fontSizeA: number;
+    fontSizeS: number;
+    fontSizeU: number;
+    fontSizeH: number;
+    fontFamilyA: string;
+    fontFamilyS: string;
+    fontFamilyU: string;
+    fontFamilyH: string;
+    hmarginA: number;
+    hmarginS: number;
+    hmarginU: number;
+    hmarginH: number;
+    bmarginA: number;
+    bmarginS: number;
+    bmarginU: number;
+    bmarginH: number;
+    transparencyA: number;
+    transparencyS: number;
+    transparencyU: number;
+    transparencyH: number;
+}
+export declare class TextSecondarySettings {
     state: State;
     hoverStyling: boolean;
     colorA: string;

@@ -33,6 +33,14 @@ export declare class Tile {
     get textAlign(): string;
     get textHmargin(): number;
     get textBmargin(): number;
+    get textPrimaryFill(): string;
+    get textPrimaryFillOpacity(): number;
+    get fontPrimarySize(): number;
+    get fontPrimaryFamily(): string;
+    get textSecondaryFill(): string;
+    get textSecondaryFillOpacity(): number;
+    get fontSecondarySize(): number;
+    get fontSecondaryFamily(): string;
     get allTextWidth(): number;
     get widthSpaceForText(): number;
     get widthSpaceForAllText(): number;
@@ -46,6 +54,7 @@ export declare class Tile {
     get contentContainerWidth(): number;
     get widthTakenByIcon(): number;
     get maxInlineTextWidth(): number;
+    get textSecondary(): string;
     get tileFill(): string;
     get tileFillOpacity(): number;
     get tileStroke(): string;
@@ -117,6 +126,7 @@ export declare class Tile {
     get textContainer(): HTMLDivElement;
     get textByIconContainer(): HTMLDivElement;
     get img(): HTMLDivElement;
+    get contentTextTextSecondary(): HTMLDivElement;
     get contentTextIconFormat(): HTMLDivElement;
     get contentTextFormat(): HTMLDivElement;
     get content(): HTMLDivElement;
