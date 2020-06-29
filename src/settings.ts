@@ -48,31 +48,21 @@ export class EffectSettings extends TileCollectionFormatSettings.EffectSettings{
 }
 
 export class ContentSettings{
-  public multiselect: boolean = false
-  public source: ContentSource = ContentSource.databound
+  public state : State = State.all;
+  public hover: boolean = false
 
-  public n: number = 5
+  public source: ContentSource = ContentSource.fixed
+
+  public n: number = 1
   public icons: boolean = false
-  public text1: string = "Text"
-  public icon1: string = ""
-  public text2: string = "Text"
-  public icon2: string = ""
-  public text3: string = "Text"
-  public icon3: string = ""
-  public text4: string = "Text"
-  public icon4: string = ""
-  public text5: string = "Text"
-  public icon5: string = ""
-  public text6: string = "Text"
-  public icon6: string = ""
-  public text7: string = "Text"
-  public icon7: string = ""
-  public text8: string = "Text"
-  public icon8: string = ""
-  public text9: string = "Text"
-  public icon9: string = ""
-  public text10: string = "Text"
-  public icon10: string = ""
+
+  public textA: string = ""
+  public textS: string = "Button Text All"
+  public textU: string = "Button Text All"
+  public textH: string = "Button Text Allr"
+
+
+  public icon: string = ""
 }
 
 export class MeasuresSettings{

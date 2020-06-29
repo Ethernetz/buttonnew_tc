@@ -198,7 +198,7 @@
             }
         },
         "text": {
-            "displayName": "Text",
+            "displayName": "Text Styling",
             "properties": {
                 "state": {
                     "displayName": "State",
@@ -1346,192 +1346,6 @@
         "content": {
             "displayName": "Content",
             "properties": {
-                "multiselect": {
-                    "displayName": "Multiselect",
-                    "description": "Ability to select multiple tiles",
-                    "type": {
-                        "bool": true
-                    }
-                },
-                "source": {
-                    "displayName": "Source",
-                    "description": "Data source",
-                    "type": {
-                        "enumeration": [
-                            {
-                                "displayName": "Data-bound",
-                                "value": "databound"
-                            },
-                            {
-                                "displayName": "Fixed",
-                                "value": "fixed"
-                            },
-                            {
-                                "displayName": "Measures",
-                                "value": "measures"
-                            }
-                        ]
-                    }
-                },
-                "n": {
-                    "displayName": "Number of tiles",
-                    "description": "Number of tiles.",
-                    "type": {
-                        "numeric": true
-                    }
-                },
-                "icons": {
-                    "displayName": "Icons",
-                    "description": "Option to give URL for tile icons",
-                    "type": {
-                        "bool": true
-                    }
-                },
-                "text1": {
-                    "displayName": "Tile 1 Text",
-                    "description": "Text for the first tile",
-                    "type": {
-                        "text": true
-                    }
-                },
-                "text2": {
-                    "displayName": "Tile 2 Text",
-                    "description": "Text for the second tile",
-                    "type": {
-                        "text": true
-                    }
-                },
-                "text3": {
-                    "displayName": "Tile 3 Text",
-                    "description": "Text for the third tile",
-                    "type": {
-                        "text": true
-                    }
-                },
-                "text4": {
-                    "displayName": "Tile 4 Text",
-                    "description": "Text for the fourth tile",
-                    "type": {
-                        "text": true
-                    }
-                },
-                "text5": {
-                    "displayName": "Tile 5 Text",
-                    "description": "Text for the fifth tile",
-                    "type": {
-                        "text": true
-                    }
-                },
-                "text6": {
-                    "displayName": "Tile 6 Text",
-                    "description": "Text for the sixth tile",
-                    "type": {
-                        "text": true
-                    }
-                },
-                "text7": {
-                    "displayName": "Tile 7 Text",
-                    "description": "Text for the seventh tile",
-                    "type": {
-                        "text": true
-                    }
-                },
-                "text8": {
-                    "displayName": "Tile 8 Text",
-                    "description": "Text for the eighth tile",
-                    "type": {
-                        "text": true
-                    }
-                },
-                "text9": {
-                    "displayName": "Tile 9 Text",
-                    "description": "Text for the ninth tile",
-                    "type": {
-                        "text": true
-                    }
-                },
-                "text10": {
-                    "displayName": "Tile 10 Text",
-                    "description": "Text for the tenth tile",
-                    "type": {
-                        "text": true
-                    }
-                },
-                "icon1": {
-                    "displayName": "Tile 1 Icon URL",
-                    "description": "Icon URL for the first tile",
-                    "type": {
-                        "text": true
-                    }
-                },
-                "icon2": {
-                    "displayName": "Tile 2 Icon URL",
-                    "description": "Icon URL for the second tile",
-                    "type": {
-                        "text": true
-                    }
-                },
-                "icon3": {
-                    "displayName": "Tile 3 Icon URL",
-                    "description": "Icon URL for the third tile",
-                    "type": {
-                        "text": true
-                    }
-                },
-                "icon4": {
-                    "displayName": "Tile 4 Icon URL",
-                    "description": "Icon URL for the fourth tile",
-                    "type": {
-                        "text": true
-                    }
-                },
-                "icon5": {
-                    "displayName": "Tile 5 Icon URL",
-                    "description": "Icon URL for the fifth tile",
-                    "type": {
-                        "text": true
-                    }
-                },
-                "icon6": {
-                    "displayName": "Tile 6 Icon URL",
-                    "description": "Icon URL for the sixth tile",
-                    "type": {
-                        "text": true
-                    }
-                },
-                "icon7": {
-                    "displayName": "Tile 7 Icon URL",
-                    "description": "Icon URL for the seventh tile",
-                    "type": {
-                        "text": true
-                    }
-                },
-                "icon8": {
-                    "displayName": "Tile 8 Icon URL",
-                    "description": "Icon URL for the eighth tile",
-                    "type": {
-                        "text": true
-                    }
-                },
-                "icon9": {
-                    "displayName": "Tile 9 Icon URL",
-                    "description": "Icon URL for the ninth tile",
-                    "type": {
-                        "text": true
-                    }
-                },
-                "icon10": {
-                    "displayName": "Tile 10 Icon URL",
-                    "description": "Icon URL for the tenth tile",
-                    "type": {
-                        "text": true
-                    }
-                }
-            }
-        },
-        "measures":{
-            "displayName": "Measures",
-            "properties": {
                 "state": {
                     "displayName": "State",
                     "description": "What state to apply the styles to",
@@ -1548,215 +1362,50 @@
                             {
                                 "displayName": "Unselected",
                                 "value": "unselected"
-                            },
-                            {
-                                "displayName": "Hover",
-                                "value": "hovered"
                             }
                         ]
                     }
                 },
-                "hoverStyling": {
-                    "displayName": "Hover styling",
-                    "description": "Allow seperate hover styling",
+                "icons": {
+                    "displayName": "Icons",
+                    "description": "Option to give URL for tile icons",
                     "type": {
                         "bool": true
                     }
                 },
-                "colorA": {
-                    "displayName": "Font color",
-                    "description": "Font color for the text.",
+                "textA": {
+                    "displayName": "Text",
+                    "description": "Text for the button",
                     "type": {
-                        "fill": {
-                            "solid": {
-                                "color": true
-                            }
-                        }
+                        "text": true
                     }
                 },
-                "colorS": {
-                    "displayName": "Font color",
-                    "description": "Font color for the text.",
+                "textS": {
+                    "displayName": "Text",
+                    "description": "Text for the button",
                     "type": {
-                        "fill": {
-                            "solid": {
-                                "color": true
-                            }
-                        }
+                        "text": true
                     }
                 },
-                "colorU": {
-                    "displayName": "Font color",
-                    "description": "Font color for the text.",
+                "textU": {
+                    "displayName": "Text",
+                    "description": "Text for the button",
                     "type": {
-                        "fill": {
-                            "solid": {
-                                "color": true
-                            }
-                        }
+                        "text": true
                     }
                 },
-                "colorH": {
-                    "displayName": "Font color",
-                    "description": "Font color for the text.",
+                "textH": {
+                    "displayName": "Text",
+                    "description": "Text for the button",
                     "type": {
-                        "fill": {
-                            "solid": {
-                                "color": true
-                            }
-                        }
+                        "text": true
                     }
                 },
-                "alignmentA": {
-                    "displayName": "Alignment",
-                    "description": "Alignment position for the text",
+                "icon": {
+                    "displayName": "Icon URL (optional)",
+                    "description": "Icon URL for the tenth tile",
                     "type": {
-                        "formatting": {
-                            "alignment": true
-                        }
-                    }
-                },
-                "alignmentS": {
-                    "displayName": "Alignment",
-                    "description": "Alignment position for the text",
-                    "type": {
-                        "formatting": {
-                            "alignment": true
-                        }
-                    }
-                },
-                "alignmentU": {
-                    "displayName": "Alignment",
-                    "description": "Alignment position for the text",
-                    "type": {
-                        "formatting": {
-                            "alignment": true
-                        }
-                    }
-                },
-                "alignmentH": {
-                    "displayName": "Alignment",
-                    "description": "Alignment position for the text",
-                    "type": {
-                        "formatting": {
-                            "alignment": true
-                        }
-                    }
-                },
-                "fontSizeA": {
-                    "displayName": "Font size",
-                    "description": "The size of the font.",
-                    "type": {
-                        "numeric": true
-                    }
-                },
-                "fontSizeS": {
-                    "displayName": "Font size",
-                    "description": "The size of the font.",
-                    "type": {
-                        "numeric": true
-                    }
-                },
-                "fontSizeU": {
-                    "displayName": "Font size",
-                    "description": "The size of the font.",
-                    "type": {
-                        "numeric": true
-                    }
-                },
-                "fontSizeH": {
-                    "displayName": "Font size",
-                    "description": "The size of the font.",
-                    "type": {
-                        "numeric": true
-                    }
-                },
-                "fontFamilyA": {
-                    "displayName": "Font family",
-                    "type": {
-                        "formatting": {
-                            "fontFamily": true
-                        }
-                    }
-                },
-                "fontFamilyS": {
-                    "displayName": "Font family",
-                    "type": {
-                        "formatting": {
-                            "fontFamily": true
-                        }
-                    }
-                },
-                "fontFamilyU": {
-                    "displayName": "Font family",
-                    "type": {
-                        "formatting": {
-                            "fontFamily": true
-                        }
-                    }
-                },
-                "fontFamilyH": {
-                    "displayName": "Font family",
-                    "type": {
-                        "formatting": {
-                            "fontFamily": true
-                        }
-                    }
-                },
-                "vmarginA": {
-                    "displayName": "Vertical margin",
-                    "description": "",
-                    "type": {
-                        "numeric": true
-                    }
-                },
-                "vmarginS": {
-                    "displayName": "Vertical margin",
-                    "description": "",
-                    "type": {
-                        "numeric": true
-                    }
-                },
-                "vmarginU": {
-                    "displayName": "Vertical margin",
-                    "description": "",
-                    "type": {
-                        "numeric": true
-                    }
-                },
-                "vmarginH": {
-                    "displayName": "Vertical margin",
-                    "description": "",
-                    "type": {
-                        "numeric": true
-                    }
-                },
-                "transparencyA": {
-                    "displayName": "Transparency",
-                    "description": "The transparency of the font.",
-                    "type": {
-                        "numeric": true
-                    }
-                },
-                "transparencyS": {
-                    "displayName": "Transparency",
-                    "description": "The transparency of the font.",
-                    "type": {
-                        "numeric": true
-                    }
-                },
-                "transparencyU": {
-                    "displayName": "Transparency",
-                    "description": "The transparency of the font.",
-                    "type": {
-                        "numeric": true
-                    }
-                },
-                "transparencyH": {
-                    "displayName": "Transparency",
-                    "description": "The transparency of the font.",
-                    "type": {
-                        "numeric": true
+                        "text": true
                     }
                 }
             }
