@@ -74,6 +74,7 @@ export declare class Tile {
     get shapeRoundedCornerRadius(): number;
     get effectSpace(): number;
     get filter(): string;
+    get bgimg(): string;
     get shadow(): boolean;
     get shadowColor(): string;
     get shadowTransparency(): number;
@@ -102,6 +103,11 @@ export declare class Tile {
     get iconPlacement(): IconPlacement;
     get iconHeight(): number;
     get iconOpacity(): number;
+    get bgImgURL(): string;
+    getBgImgDims(box: DOMRect): {
+        width: number;
+        height: number;
+    };
     get tileData(): TileData;
     get isSelected(): boolean;
     get isHovered(): boolean;

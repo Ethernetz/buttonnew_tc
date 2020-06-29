@@ -56,6 +56,9 @@ export declare class MeasuresSettings {
     transparencyU: number;
     transparencyH: number;
 }
+export declare class BgImgSettings {
+    img: string;
+}
 export declare class VisualSettings extends DataViewObjectsParser {
     tile: TileSettings;
     text: TextSettings;
@@ -63,5 +66,6 @@ export declare class VisualSettings extends DataViewObjectsParser {
     layout: LayoutSettings;
     effects: EffectSettings;
     content: ContentSettings;
+    bgimg: BgImgSettings;
     measures: MeasuresSettings;
 }
