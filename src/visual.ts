@@ -227,6 +227,7 @@ export class Visual implements IVisual {
         genericsCollection.tilesData = [{
             text: isSelected ? this.visualSettings.content.textS : this.visualSettings.content.textU ,
             iconURL: isSelected ? this.visualSettings.content.iconS : this.visualSettings.content.iconU,
+            bgimgURL: this.visualSettings.bgimg.img,
             contentFormatType: this.visualSettings.icon.icons ? ContentFormatType.text_icon : ContentFormatType.text,
             isSelected: isSelected,
             isHovered: this.hoveredIndex == 0
