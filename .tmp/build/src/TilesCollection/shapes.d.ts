@@ -1,4 +1,4 @@
-import { containerProperties, Handle } from "../interfaces";
+import { containerProperties, Handle } from "./interfaces";
 export declare class Shape {
     xPos: number;
     yPos: number;

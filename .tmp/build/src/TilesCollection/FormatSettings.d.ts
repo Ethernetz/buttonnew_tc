@@ -150,6 +150,7 @@ export declare class EffectSettings {
     shadowColorA: string;
     shadowColorS: string;
     shadowColorU: string;
+    shadowColorH: string;
     shadowTransparencyA: number;
     shadowTransparencyS: number;
     shadowTransparencyU: number;
@@ -170,6 +171,7 @@ export declare class EffectSettings {
     glowColorA: string;
     glowColorS: string;
     glowColorU: string;
+    glowColorH: string;
     glowTransparencyA: number;
     glowTransparencyS: number;
     glowTransparencyU: number;

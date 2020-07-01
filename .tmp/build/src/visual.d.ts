@@ -14,11 +14,8 @@ export declare class Visual implements IVisual {
     private target;
     selectionManager: ISelectionManager;
     selectionManagerUnbound: SelectionManagerUnbound;
-    private selectionManagerHover;
-    private selectionIds;
     host: IVisualHost;
     visualSettings: VisualSettings;
-    private selectionIdBuilder;
     private svg;
     private container;
     hoveredIndex: number;

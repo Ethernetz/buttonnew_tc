@@ -2,7 +2,6 @@ import { dataViewObjectsParser } from "powerbi-visuals-utils-dataviewutils";
 import DataViewObjectsParser = dataViewObjectsParser.DataViewObjectsParser;
 import * as TileCollectionFormatSettings from "./TilesCollection/FormatSettings";
 import { AlignmentType, State } from './TilesCollection/enums';
-import { ContentSource } from './enums';
 export declare class TileSettings extends TileCollectionFormatSettings.TileSettings {
 }
 export declare class TextSettings extends TileCollectionFormatSettings.TextSettings {
@@ -16,7 +15,6 @@ export declare class EffectSettings extends TileCollectionFormatSettings.EffectS
 export declare class ContentSettings {
     state: State;
     hover: boolean;
-    source: ContentSource;
     n: number;
     icons: boolean;
     textA: string;

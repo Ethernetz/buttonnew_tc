@@ -44,10 +44,8 @@ import { VisualSettings } from "./settings";
 import VisualObjectInstanceEnumeration = powerbi.VisualObjectInstanceEnumeration;
 import EnumerateVisualObjectInstancesOptions = powerbi.EnumerateVisualObjectInstancesOptions;
 
-import { valueFormatter } from "powerbi-visuals-utils-formattingutils"
 
 import * as d3 from "d3";
-// import { ProcessedVisualSettings } from "./processedvisualsettings";
 
 import { propertyStateName} from './interfaces'
 import { getPropertyStateNameArr, getObjectsToPersist, getCorrectPropertyStateName } from './functions'
@@ -57,43 +55,26 @@ type Selection<T extends d3.BaseType> = d3.Selection<T, any, any, any>;
 
 // import * as enums from "./enums"
 import {TileSizingType, TileLayoutType, TileShape, IconPlacement, State} from './TilesCollection/enums'
-import {ContentSource} from './enums'
 
-import { select, merge } from "d3";
-
-
-import {GenericsCollection} from './GenericsCollection'
+import {ButtonCollection} from './ButtonCollection'
 import { ContentFormatType } from "./TilesCollection/enums";
 
 export class Visual implements IVisual {
-    private target: HTMLElement;
-    public selectionManager: ISelectionManager;
     public selectionManagerUnbound: SelectionManagerUnbound
-    private selectionManagerHover: ISelectionManager;
-    private selectionIds: any = {};
     public host: IVisualHost;
-
     public visualSettings: VisualSettings;
-    private selectionIdBuilder: ISelectionIdBuilder;
-
     private svg: Selection<SVGElement>;
     private container: Selection<SVGElement>;
     public hoveredIndex: number
 
     public shiftFired: boolean = false
 
-
     constructor(options: VisualConstructorOptions) {
-        this.selectionIdBuilder = options.host.createSelectionIdBuilder();
-        this.selectionManager = options.host.createSelectionManager();
         this.selectionManagerUnbound = new SelectionManagerUnbound()
-        this.selectionManagerHover = options.host.createSelectionManager();
         this.host = options.host;
         this.svg = d3.select(options.element)
             .append('svg')
             .classed('navigator', true);
-
-        // let defs = this.svg.append("defs");
         this.container = this.svg.append("g")
             .classed('container', true);
     }
@@ -156,17 +137,9 @@ export class Visual implements IVisual {
             delete settings.icon[getCorrectPropertyStateName(settings.icon.state, "topMargin")]
             delete settings.icon[getCorrectPropertyStateName(settings.icon.state, "bottomMargin")]
         }
-        if(!(settings.content.source != ContentSource.measures && settings.icon.icons && iconPlacement == IconPlacement.above))
+        if(settings.icon.icons && iconPlacement == IconPlacement.above)
             delete settings.text[getCorrectPropertyStateName(settings.text.state, "bmargin")]
 
-        if (settings.layout.sizingMethod != TileSizingType.fixed) {
-            delete settings.layout.tileWidth;
-            delete settings.layout.tileHeight;
-            delete settings.layout.tileAlignment;
-        }
-        if (settings.layout.tileLayout != TileLayoutType.grid) {
-            delete settings.layout.rowLength
-        }
 
         if (settings.layout.tileShape != TileShape.parallelogram) {
             delete settings.layout.parallelogramAngle
@@ -206,25 +179,24 @@ export class Visual implements IVisual {
             .style('height', options.viewport.height)
 
 
-        let genericsCollection = new GenericsCollection()
+        let buttonsCollection = new ButtonCollection()
 
-        genericsCollection.formatSettings.tile = this.visualSettings.tile
-        genericsCollection.formatSettings.text = this.visualSettings.text
-        genericsCollection.formatSettings.icon = this.visualSettings.icon
-        genericsCollection.formatSettings.layout = this.visualSettings.layout
-        genericsCollection.formatSettings.effect = this.visualSettings.effects
+        buttonsCollection.formatSettings.tile = this.visualSettings.tile
+        buttonsCollection.formatSettings.text = this.visualSettings.text
+        buttonsCollection.formatSettings.icon = this.visualSettings.icon
+        buttonsCollection.formatSettings.layout = this.visualSettings.layout
+        buttonsCollection.formatSettings.effect = this.visualSettings.effects
 
 
-        genericsCollection.container = this.container
-        genericsCollection.viewport = {
+        buttonsCollection.container = this.container
+        buttonsCollection.viewport = {
             height: options.viewport.height,
             width:options.viewport.width,
         }
-        genericsCollection.visual = this
-        genericsCollection.options = options
-        let dataView = options.dataViews[0]
+        buttonsCollection.visual = this
+        buttonsCollection.options = options
         let isSelected: boolean = this.selectionManagerUnbound.getSelectionIndexes().indexOf(0) > -1
-        genericsCollection.tilesData = [{
+        buttonsCollection.tilesData = [{
             text: isSelected ? this.visualSettings.content.textS : this.visualSettings.content.textU ,
             iconURL: isSelected ? this.visualSettings.content.iconS : this.visualSettings.content.iconU,
             bgimgURL: this.visualSettings.bgimg.img,
@@ -233,7 +205,7 @@ export class Visual implements IVisual {
             isHovered: this.hoveredIndex == 0
         }];
         
-        genericsCollection.render()
+        buttonsCollection.render()
         }
 
     private static parseSettings(dataView: DataView): VisualSettings {

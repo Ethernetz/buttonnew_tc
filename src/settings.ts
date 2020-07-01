@@ -51,8 +51,6 @@ export class ContentSettings{
   public state : State = State.all;
   public hover: boolean = false
 
-  public source: ContentSource = ContentSource.fixed
-
   public n: number = 1
   public icons: boolean = false
 

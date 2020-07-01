@@ -959,6 +959,17 @@
                         }
                     }
                 },
+                "shadowColorH": {
+                    "displayName": "Color",
+                    "description": "Color of shadow",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
                 "shadowTransparencyA": {
                     "displayName": "Transparency",
                     "description": "Transparency of the shadow.",
@@ -1275,6 +1286,17 @@
                         }
                     }
                 },
+                "glowColorH": {
+                    "displayName": "Color",
+                    "description": "Color of glow",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
                 "glowTransparencyA": {
                     "displayName": "Transparency",
                     "description": "Transparency of the glow.",
@@ -1384,13 +1406,6 @@
                         "text": true
                     }
                 },
-                "textH": {
-                    "displayName": "Text",
-                    "description": "Text for the button",
-                    "type": {
-                        "text": true
-                    }
-                },
                 "iconA": {
                     "displayName": "Icon URL",
                     "description": "Icon URL for the tenth tile",
@@ -1406,13 +1421,6 @@
                     }
                 },
                 "iconU": {
-                    "displayName": "Icon URL",
-                    "description": "Icon URL for the tenth tile",
-                    "type": {
-                        "text": true
-                    }
-                },
-                "iconH": {
                     "displayName": "Icon URL",
                     "description": "Icon URL for the tenth tile",
                     "type": {
@@ -1434,6 +1442,7 @@
             }
         }
     },
+    "suppressDefaultTitle": true, 
     "dataViewMappings": [
         {
             "categorical": {

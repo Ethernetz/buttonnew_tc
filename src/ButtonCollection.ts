@@ -7,32 +7,27 @@ import { TilesCollection } from "./TilesCollection/TilesCollection";
 import { Tile } from "./TilesCollection/Tile";
 import powerbi from "powerbi-visuals-api";
 import { TileData } from "./TilesCollection/TileData";
-import * as d3 from "d3";
-import { Shape } from "./TilesCollection/shapes";
-import { Handle } from "./interfaces";
-import { select } from "d3";
-
 // import { sizeTextContainer, styleText, makeTextTransparent } from './d3calls'
 
-export class GenericsCollection extends TilesCollection {
+export class ButtonCollection extends TilesCollection {
     visual: Visual
     options: VisualUpdateOptions
-    tilesData = <GenericData[]>this.tilesData
+    tilesData = <ButtonData[]>this.tilesData
 
     public createTile(i): Tile {
-        return new Generic(this, i, this.tilesData, this.formatSettings)
+        return new Button(this, i, this.tilesData, this.formatSettings)
     }
 
 }
 
-export class Generic extends Tile {
-    collection = <GenericsCollection>this.collection
-    tilesData = <GenericData[]>this.tilesData
+export class Button extends Tile {
+    collection = <ButtonCollection>this.collection
+    tilesData = <ButtonData[]>this.tilesData
     visual: Visual = this.collection.visual
 
 
     onTileClick() {
-        // this.visual.selectionManager.select((<GenericeData>this.tileData).selectionId, false) //BOUND
+        // this.visual.selectionManager.select((<ButtoneData>this.tileData).selectionId, false) //BOUND
         this.visual.selectionManagerUnbound.select(this.i) //FIXED
         this.visual.update(this.collection.options)
     }
@@ -51,7 +46,7 @@ export class Generic extends Tile {
     }
 }
 
-export class GenericData extends TileData {
+export class ButtonData extends TileData {
     selectionId?: ISelectionId
 }
 

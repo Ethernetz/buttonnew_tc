@@ -5,7 +5,7 @@ import { State, TileShape, Direction, IconPlacement } from './enums';
 import { Shape } from "./shapes";
 import { BaseType } from 'd3';
 import { TilesCollection } from './TilesCollection';
-import { Handle } from '../interfaces';
+import { Handle } from './interfaces';
 export declare class Tile {
     collection: TilesCollection;
     i: number;
