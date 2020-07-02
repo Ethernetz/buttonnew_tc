@@ -5,14 +5,11 @@ import VisualConstructorOptions = powerbi.extensibility.visual.VisualConstructor
 import VisualUpdateOptions = powerbi.extensibility.visual.VisualUpdateOptions;
 import IVisual = powerbi.extensibility.visual.IVisual;
 import IVisualHost = powerbi.extensibility.visual.IVisualHost;
-import ISelectionManager = powerbi.extensibility.ISelectionManager;
 import { VisualSettings } from "./settings";
 import VisualObjectInstanceEnumeration = powerbi.VisualObjectInstanceEnumeration;
 import EnumerateVisualObjectInstancesOptions = powerbi.EnumerateVisualObjectInstancesOptions;
 import { SelectionManagerUnbound } from './SelectionManagerUnbound';
 export declare class Visual implements IVisual {
-    private target;
-    selectionManager: ISelectionManager;
     selectionManagerUnbound: SelectionManagerUnbound;
     host: IVisualHost;
     visualSettings: VisualSettings;

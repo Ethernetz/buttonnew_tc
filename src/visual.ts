@@ -32,8 +32,6 @@ import VisualConstructorOptions = powerbi.extensibility.visual.VisualConstructor
 import VisualUpdateOptions = powerbi.extensibility.visual.VisualUpdateOptions;
 import IVisual = powerbi.extensibility.visual.IVisual;
 import IVisualHost = powerbi.extensibility.visual.IVisualHost;
-import ISelectionManager = powerbi.extensibility.ISelectionManager;
-import ISelectionIdBuilder = powerbi.extensibility.ISelectionIdBuilder;
 import DataView = powerbi.DataView;
 import VisualObjectInstancesToPersist = powerbi.VisualObjectInstancesToPersist
 import VisualObjectInstance = powerbi.VisualObjectInstance
@@ -54,21 +52,21 @@ import { SelectionManagerUnbound } from './SelectionManagerUnbound'
 type Selection<T extends d3.BaseType> = d3.Selection<T, any, any, any>;
 
 // import * as enums from "./enums"
-import {TileSizingType, TileLayoutType, TileShape, IconPlacement, State} from './TilesCollection/enums'
+import {TileShape, IconPlacement, State} from './TilesCollection/enums'
 
 import {ButtonCollection} from './ButtonCollection'
 import { ContentFormatType } from "./TilesCollection/enums";
 
 export class Visual implements IVisual {
-    public selectionManagerUnbound: SelectionManagerUnbound
-    public host: IVisualHost;
     public visualSettings: VisualSettings;
+    public host: IVisualHost;
+   
     private svg: Selection<SVGElement>;
     private container: Selection<SVGElement>;
     public hoveredIndex: number
-
     public shiftFired: boolean = false
-
+    public selectionManagerUnbound: SelectionManagerUnbound
+    
     constructor(options: VisualConstructorOptions) {
         this.selectionManagerUnbound = new SelectionManagerUnbound()
         this.host = options.host;
