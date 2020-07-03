@@ -29,8 +29,7 @@
 import { dataViewObjectsParser } from "powerbi-visuals-utils-dataviewutils";
 import DataViewObjectsParser = dataViewObjectsParser.DataViewObjectsParser;
 import * as TileCollectionFormatSettings from "./TilesCollection/FormatSettings"
-import {AlignmentType, TileSizingType, TileLayoutType, TileShape, Direction, IconPlacement, State} from './TilesCollection/enums'
-import {ContentSource} from './enums'
+import {State} from './TilesCollection/enums'
 
 export class TileSettings extends TileCollectionFormatSettings.TileSettings{
 }
@@ -54,7 +53,8 @@ export class ContentSettings{
   public n: number = 1
   public icons: boolean = false
 
-  public textA: string = "Button Text"
+  public textD: string = "Button Text"
+  public textA: string = ""
   public textS: string = ""
   public textU: string = ""
   public textH: string = ""

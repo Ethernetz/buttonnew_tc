@@ -4,12 +4,14 @@ export interface propertyStateName {
     selected: string;
     unselected: string;
     hover: string;
+    default: string;
 }
 export interface propertyStateValue {
     all: string | number;
     selected: string | number;
     unselected: string | number;
     hover: string | number;
+    default: string | number;
 }
 export interface propertyStatesInput extends propertyStateValue {
     state: State;

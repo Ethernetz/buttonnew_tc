@@ -1,7 +1,7 @@
 import { ContentFormatType } from './enums';
 export declare class TileData {
     text?: string;
-    textSecondary?: string;
+    text2?: string;
     iconURL?: string;
     bgimgURL?: string;
     isSelected?: boolean;

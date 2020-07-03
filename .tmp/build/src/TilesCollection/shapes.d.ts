@@ -1,4 +1,4 @@
-import { containerProperties, Handle } from "./interfaces";
+import { boundingBox, Handle } from "./interfaces";
 export declare class Shape {
     xPos: number;
     yPos: number;
@@ -9,7 +9,6 @@ export declare class Shape {
     static handleFocused: boolean;
     constructor(xPos: number, yPos: number, width: number, height: number, radius?: number);
     get strokePath(): string;
-    static getAlterHPadding(height: number, angle: number): number;
     get handles(): any[];
 }
 export interface Shape {
@@ -19,20 +18,20 @@ export interface Shape {
     height: number;
     shapePath: string;
     strokePath: string;
-    contentFODims: containerProperties;
+    contentBoundingBox: boundingBox;
     handles: any[];
 }
 export declare class Rectangle extends Shape implements Shape {
     constructor(xPos: number, yPos: number, width: number, height: number, radius: number);
     get shapePath(): string;
-    get contentFODims(): containerProperties;
+    get contentBoundingBox(): boundingBox;
 }
 export declare class Parallelogram extends Shape implements Shape {
     static _z: number;
     angle: number;
     constructor(xPos: number, yPos: number, width: number, height: number, angle: number, radius: number);
     get shapePath(): string;
-    get contentFODims(): containerProperties;
+    get contentBoundingBox(): boundingBox;
     get handles(): Handle[];
     static getAlterHPadding(height: number, angle: number): number;
 }
@@ -41,16 +40,16 @@ export declare class ParallelogramVertical extends Shape implements Shape {
     angle: number;
     constructor(xPos: number, yPos: number, width: number, height: number, angle: number, radius: number);
     get shapePath(): string;
-    get contentFODims(): containerProperties;
+    get contentBoundingBox(): boundingBox;
     get handles(): Handle[];
-    get alterVPadding(): number;
+    static getAlterVPadding(width: number, angle: number): number;
 }
 export declare class Chevron extends Shape implements Shape {
     static _z: number;
     angle: number;
     constructor(xPos: number, yPos: number, width: number, height: number, angle: number, radius: number);
     get shapePath(): string;
-    get contentFODims(): containerProperties;
+    get contentBoundingBox(): boundingBox;
     get handles(): Handle[];
     static getAlterHPadding(height: number, angle: number): number;
 }
@@ -59,40 +58,40 @@ export declare class ChevronVertical extends Shape implements Shape {
     angle: number;
     constructor(xPos: number, yPos: number, width: number, height: number, angle: number, radius: number);
     get shapePath(): string;
-    get contentFODims(): containerProperties;
+    get contentBoundingBox(): boundingBox;
     get handles(): Handle[];
-    get alterVPadding(): number;
+    static getAlterVPadding(width: number, angle: number): number;
 }
 export declare class Pentagon extends Shape implements Shape {
     static _z: number;
     constructor(xPos: number, yPos: number, width: number, height: number, angle: number, radius: number);
     get shapePath(): string;
-    get contentFODims(): containerProperties;
+    get contentBoundingBox(): boundingBox;
     get handles(): Handle[];
 }
 export declare class Hexagon extends Shape implements Shape {
     static _z: number;
     constructor(xPos: number, yPos: number, width: number, height: number, angle: number, radius: number);
     get shapePath(): string;
-    get contentFODims(): containerProperties;
+    get contentBoundingBox(): boundingBox;
     get handles(): Handle[];
 }
 export declare class Ellipse extends Shape implements Shape {
     constructor(xPos: number, yPos: number, width: number, height: number);
     get shapePath(): string;
-    get contentFODims(): containerProperties;
+    get contentBoundingBox(): boundingBox;
 }
 export declare class Tab_RoundedCorners extends Shape implements Shape {
     constructor(xPos: number, yPos: number, width: number, height: number);
     get shapePath(): string;
-    get contentFODims(): containerProperties;
+    get contentBoundingBox(): boundingBox;
     get strokePath(): string;
 }
 export declare class Tab_CutCorners extends Shape implements Shape {
     static _z: number;
     constructor(xPos: number, yPos: number, width: number, height: number, length: number);
     get shapePath(): string;
-    get contentFODims(): containerProperties;
+    get contentBoundingBox(): boundingBox;
     get strokePath(): string;
     get handles(): Handle[];
 }
@@ -100,7 +99,7 @@ export declare class Tab_CutCorner extends Shape implements Shape {
     static _z: number;
     constructor(xPos: number, yPos: number, width: number, height: number, length: number);
     get shapePath(): string;
-    get contentFODims(): containerProperties;
+    get contentBoundingBox(): boundingBox;
     get strokePath(): string;
     get handles(): Handle[];
 }

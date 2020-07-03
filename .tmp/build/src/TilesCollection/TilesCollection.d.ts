@@ -10,6 +10,7 @@ export declare class TilesCollection {
     viewport: Viewport;
     container: Selection<SVGElement>;
     tiles: Tile[];
+    maxBoundedTextHeight: number;
     render(): void;
     createTile(i: any): Tile;
     onShift(): void;

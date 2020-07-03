@@ -1,6 +1,5 @@
 import { Visual } from "./visual";
 import VisualUpdateOptions = powerbi.extensibility.visual.VisualUpdateOptions;
-import ISelectionId = powerbi.extensibility.ISelectionId;
 
 
 import { TilesCollection } from "./TilesCollection/TilesCollection";
@@ -27,8 +26,7 @@ export class Button extends Tile {
 
 
     onTileClick() {
-        // this.visual.selectionManager.select((<ButtoneData>this.tileData).selectionId, false) //BOUND
-        this.visual.selectionManagerUnbound.select(this.i) //FIXED
+        this.visual.selectionManagerUnbound.select(this.i)
         this.visual.update(this.collection.options)
     }
 
@@ -47,6 +45,5 @@ export class Button extends Tile {
 }
 
 export class ButtonData extends TileData {
-    selectionId?: ISelectionId
 }
 

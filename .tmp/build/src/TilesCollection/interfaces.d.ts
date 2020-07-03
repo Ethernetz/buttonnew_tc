@@ -21,7 +21,7 @@ export interface Handle {
     z: number;
     handleFocused: boolean;
 }
-export interface containerProperties {
+export interface boundingBox {
     xPos: number;
     yPos: number;
     width: number;

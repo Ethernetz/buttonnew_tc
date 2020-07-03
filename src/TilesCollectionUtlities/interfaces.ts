@@ -1,6 +1,6 @@
-import {State} from './TilesCollection/enums'
+import {State} from '../TilesCollection/enums'
 
-export interface propertyStateName {
+export interface PropertyGroupKeys {
     all: string,
     selected: string,
     unselected: string,
@@ -8,7 +8,7 @@ export interface propertyStateName {
     default: string
 }
 
-export interface propertyStateValue {
+export interface PropertyGroupValues {
     all: string | number,
     selected: string | number,
     unselected: string | number,
@@ -16,10 +16,10 @@ export interface propertyStateValue {
     default: string | number
 }
 
-export interface propertyStatesInput extends propertyStateValue {
+export interface PropertyGroupValuesWithState extends PropertyGroupValues {
     state: State
 }
 
-export interface propertyStatesOutput extends propertyStateValue {
+export interface PropertyGroupValuesWithDidChange extends PropertyGroupValues {
     didChange: boolean
 }
