@@ -45,7 +45,7 @@ import EnumerateVisualObjectInstancesOptions = powerbi.EnumerateVisualObjectInst
 
 import * as d3 from "d3";
 
-import { PropertyGroupKeys} from './TilesCollectionUtlities/interfaces'
+import { PropertyGroupKeys } from './TilesCollection/interfaces'
 import { getPropertyStateNameArr, getObjectsToPersist } from './TilesCollectionUtlities/functions'
 import { getCorrectPropertyStateName } from './functions'
 import { SelectionManagerUnbound } from './SelectionManagerUnbound'
