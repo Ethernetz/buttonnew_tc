@@ -1,8 +1,16 @@
-export interface PropertyStateNames {
+export interface PropertyGroupKeys {
+    default: string;
     all: string;
     selected: string;
     unselected: string;
     hover: string;
+}
+export interface PropertyGroupValues {
+    default: string | number;
+    all: string | number;
+    selected: string | number;
+    unselected: string | number;
+    hover: string | number;
 }
 export interface Viewport {
     height: number;
