@@ -55,15 +55,13 @@ export class ContentSettings{
 
   public textD: string = "Button Text"
   public textA: string = ""
-  public textS: string = ""
-  public textU: string = ""
-  public textH: string = ""
+  public textS: string = null
+  public textU: string = null
 
   public iconD: string = ""
   public iconA: string = ""
-  public iconS: string = ""
-  public iconU: string = ""
-  public iconH: string = ""
+  public iconS: string = null
+  public iconU: string = null
 }
 
 export class BgImgSettings{

@@ -168,6 +168,7 @@ export class Visual implements IVisual {
         
         
         let objects: powerbi.VisualObjectInstancesToPersist = getObjectsToPersist(this.visualSettings)
+        console.log(objects)
         if (objects.merge.length != 0)
             this.host.persistProperties(objects);
         
