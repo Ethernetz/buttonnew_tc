@@ -61,7 +61,6 @@ export function getObjectsToPersist(visualSettings: VisualSettings): powerbi.Vis
                 state: visualSettings[objKey].state,
             }
             let leveledPropertyState = levelProperties(propValues, propKeys, statesUsed)
-            console.log(leveledPropertyState)
             if (leveledPropertyState.didChange) {
                 object.properties[propKeys.all] = leveledPropertyState.all
                 if (statesUsed.selected)
