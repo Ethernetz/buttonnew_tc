@@ -46,7 +46,8 @@ import EnumerateVisualObjectInstancesOptions = powerbi.EnumerateVisualObjectInst
 import * as d3 from "d3";
 
 import { PropertyGroupKeys } from './TilesCollection/interfaces'
-import { getPropertyStateNameArr, getObjectsToPersist, getCorrectPropertyStateName } from './TilesCollectionUtlities/functions'
+import { getPropertyStateNameArr, getObjectsToPersist} from './TilesCollectionUtlities/functions'
+import { getCorrectPropertyStateName } from './TilesCollection/functions'
 import { SelectionManagerUnbound } from './SelectionManagerUnbound'
 
 type Selection<T extends d3.BaseType> = d3.Selection<T, any, any, any>;
@@ -165,17 +166,12 @@ export class Visual implements IVisual {
         if (!(options && options.dataViews && options.dataViews[0]))
             return
         this.visualSettings = VisualSettings.parse(options.dataViews[0]) as VisualSettings
-        
+        console.log(this.visualSettings)
         
         let objects: powerbi.VisualObjectInstancesToPersist = getObjectsToPersist(this.visualSettings)
-        console.log(objects)
         if (objects.merge.length != 0)
             this.host.persistProperties(objects);
         
-
-        this.svg
-            .style('width', options.viewport.width)
-            .style('height', options.viewport.height)
 
 
         let buttonsCollection = new ButtonCollection()
@@ -188,6 +184,7 @@ export class Visual implements IVisual {
 
 
         buttonsCollection.container = this.container
+        buttonsCollection.svg = this.svg
         buttonsCollection.viewport = {
             height: options.viewport.height,
             width:options.viewport.width,

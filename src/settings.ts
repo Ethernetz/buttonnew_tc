@@ -30,6 +30,8 @@ import { dataViewObjectsParser } from "powerbi-visuals-utils-dataviewutils";
 import DataViewObjectsParser = dataViewObjectsParser.DataViewObjectsParser;
 import * as TileCollectionFormatSettings from "./TilesCollection/FormatSettings"
 import {State} from './TilesCollection/enums'
+import { TileCollectionStateFormatObject } from "./TilesCollection/FormatSettings";
+import { StatesUsed } from "./TilesCollection/interfaces";
 
 export class TileSettings extends TileCollectionFormatSettings.TileSettings{
 }
@@ -46,8 +48,14 @@ export class LayoutSettings extends TileCollectionFormatSettings.LayoutSettings{
 export class EffectSettings extends TileCollectionFormatSettings.EffectSettings{
 }
 
-export class ContentSettings{
+export class ContentSettings implements TileCollectionStateFormatObject{
   public state : State = State.all;
+  statesUsed: StatesUsed = {
+    selected: true,
+    unselected: true,
+    hover: false,
+    disabled: false
+  }
   public hover: boolean = false
 
   public n: number = 1
