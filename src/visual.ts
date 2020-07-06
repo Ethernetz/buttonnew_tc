@@ -53,7 +53,7 @@ import { SelectionManagerUnbound } from './SelectionManagerUnbound'
 type Selection<T extends d3.BaseType> = d3.Selection<T, any, any, any>;
 
 // import * as enums from "./enums"
-import {TileShape, IconPlacement, State} from './TilesCollection/enums'
+import {TileShape, IconPlacement, State, PresetStyle} from './TilesCollection/enums'
 
 import {ButtonCollection} from './ButtonCollection'
 import { ContentFormatType } from "./TilesCollection/enums";
@@ -67,6 +67,9 @@ export class Visual implements IVisual {
     public hoveredIndex: number
     public shiftFired: boolean = false
     public selectionManagerUnbound: SelectionManagerUnbound
+
+    public currentPresetStyle: PresetStyle = PresetStyle.none
+    public currentPresetBaseColor: string = ""
     
     constructor(options: VisualConstructorOptions) {
         this.selectionManagerUnbound = new SelectionManagerUnbound()
@@ -168,7 +171,11 @@ export class Visual implements IVisual {
         this.visualSettings = VisualSettings.parse(options.dataViews[0]) as VisualSettings
         console.log(this.visualSettings)
         
-        let objects: powerbi.VisualObjectInstancesToPersist = getObjectsToPersist(this.visualSettings)
+        let objects: powerbi.VisualObjectInstancesToPersist = getObjectsToPersist(this.visualSettings,
+            this.visualSettings.presetStyle.preset,
+            this.visualSettings.presetStyle.preset != this.currentPresetStyle || this.visualSettings.presetStyle.color != this.currentPresetBaseColor)
+        this.currentPresetStyle = this.visualSettings.presetStyle.preset
+        this.currentPresetBaseColor = this.visualSettings.presetStyle.color
         if (objects.merge.length != 0)
             this.host.persistProperties(objects);
         
