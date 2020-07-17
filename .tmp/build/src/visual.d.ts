@@ -9,6 +9,7 @@ import { VisualSettings } from "./settings";
 import VisualObjectInstanceEnumeration = powerbi.VisualObjectInstanceEnumeration;
 import EnumerateVisualObjectInstancesOptions = powerbi.EnumerateVisualObjectInstancesOptions;
 import { SelectionManagerUnbound } from './SelectionManagerUnbound';
+import { PresetStyle } from './TilesCollection/enums';
 export declare class Visual implements IVisual {
     visualSettings: VisualSettings;
     host: IVisualHost;
@@ -17,6 +18,8 @@ export declare class Visual implements IVisual {
     hoveredIndex: number;
     shiftFired: boolean;
     selectionManagerUnbound: SelectionManagerUnbound;
+    currentPresetStyle: PresetStyle;
+    currentPresetBaseColor: string;
     constructor(options: VisualConstructorOptions);
     enumerateObjectInstances(options: EnumerateVisualObjectInstancesOptions): VisualObjectInstanceEnumeration;
     update(options: VisualUpdateOptions): void;

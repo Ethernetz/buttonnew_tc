@@ -31,13 +31,17 @@ export declare class Tile {
     get fontSize(): number;
     get fontFamily(): string;
     get textAlign(): string;
-    get textHmargin(): number;
+    get textMarginLeft(): number;
+    get textMarginRight(): number;
+    get totalHorizontalTextMargin(): number;
     get textBmargin(): number;
     get text2Color(): string;
     get text2Opacity(): number;
     get font2Size(): number;
     get font2Family(): string;
     get text2Align(): string;
+    get tex2tMarginLeft(): number;
+    get text2MarginRight(): number;
     get allTextWidth(): number;
     get widthSpaceForText(): number;
     get widthSpaceForAllText(): number;
@@ -57,6 +61,7 @@ export declare class Tile {
     get tileFillOpacity(): number;
     get tileStroke(): string;
     get tileStrokeWidth(): number;
+    get maxTileStrokeWidth(): number;
     get tilePadding(): number;
     get tileHPadding(): number;
     get totalTileHPadding(): number;
@@ -118,6 +123,7 @@ export declare class Tile {
     get tileData(): TileData;
     get isSelected(): boolean;
     get isHovered(): boolean;
+    get isDisabled(): boolean;
     get currentState(): State;
     get textElement(): HTMLSpanElement;
     get textElementByIcon(): HTMLSpanElement;

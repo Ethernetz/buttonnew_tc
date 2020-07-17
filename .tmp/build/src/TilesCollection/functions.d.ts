@@ -4,4 +4,5 @@ export declare function calculateWordDimensions(text: string, fontFamily: string
     height: number;
 };
 export declare function getMatchingStateProperty(state: State, formatObj: any, propBase: string): any;
+export declare function getCorrectPropertyStateName(state: State, propBase: string): string;
 export declare function round(n: any, p?: any): number;

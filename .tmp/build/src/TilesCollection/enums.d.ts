@@ -2,7 +2,8 @@ export declare enum State {
     all = "all",
     selected = "selected",
     unselected = "unselected",
-    hovered = "hovered"
+    hovered = "hovered",
+    disabled = "disabled"
 }
 export declare enum ContentFormatType {
     text = "text",
@@ -53,4 +54,14 @@ export declare enum IconPlacement {
     above = "above",
     below = "below",
     empty = ""
+}
+export declare enum PresetStyle {
+    none = "none",
+    darker = "darker",
+    lighter = "lighter",
+    filled = "filled",
+    popped = "popped",
+    pressed = "pressed",
+    glow = "glow",
+    outlined = "outlined"
 }

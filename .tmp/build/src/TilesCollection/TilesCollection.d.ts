@@ -9,8 +9,11 @@ export declare class TilesCollection {
     tilesData: TileData[];
     viewport: Viewport;
     container: Selection<SVGElement>;
+    svg: Selection<SVGElement>;
     tiles: Tile[];
     maxBoundedTextHeight: number;
+    maxInlineTextHeight: number;
+    minTileWidth: number;
     render(): void;
     createTile(i: any): Tile;
     onShift(): void;

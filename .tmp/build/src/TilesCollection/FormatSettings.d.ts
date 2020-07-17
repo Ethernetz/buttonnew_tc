@@ -1,4 +1,4 @@
-import { Viewport } from './interfaces';
+import { Viewport, StatesUsed } from './interfaces';
 import { AlignmentType, TileSizingType, TileLayoutType, TileShape, Direction, IconPlacement, State } from './enums';
 export declare class FormatSettings {
     tile: TileSettings;
@@ -8,68 +8,91 @@ export declare class FormatSettings {
     icon: IconSettings;
     viewport: Viewport;
 }
-export declare class TileSettings {
+export interface TileCollectionStatedFormatObject {
     state: State;
+    statesUsed: StatesUsed;
+}
+export declare class TileSettings implements TileCollectionStatedFormatObject {
+    state: State;
+    statesUsed: StatesUsed;
     hoverStyling: boolean;
     colorD: string;
     colorA: string;
     colorS: string;
     colorU: string;
     colorH: string;
+    colorN: string;
     strokeD: string;
     strokeA: string;
     strokeS: string;
     strokeU: string;
     strokeH: string;
+    strokeN: string;
     strokeWidthD: number;
     strokeWidthA: number;
     strokeWidthS: number;
     strokeWidthU: number;
     strokeWidthH: number;
+    strokeWidthN: number;
     transparencyD: number;
     transparencyA: number;
     transparencyS: number;
     transparencyU: number;
     transparencyH: number;
+    transparencyN: number;
 }
-export declare class TextSettings {
+export declare class TextSettings implements TileCollectionStatedFormatObject {
     state: State;
+    statesUsed: StatesUsed;
     hoverStyling: boolean;
     colorD: string;
     colorA: string;
     colorS: string;
     colorU: string;
     colorH: string;
+    colorN: string;
     alignmentD: AlignmentType;
     alignmentA: AlignmentType;
     alignmentS: AlignmentType;
     alignmentU: AlignmentType;
     alignmentH: AlignmentType;
+    alignmentN: AlignmentType;
     fontSizeD: number;
     fontSizeA: number;
     fontSizeS: number;
     fontSizeU: number;
     fontSizeH: number;
+    fontSizeN: number;
     fontFamilyD: string;
     fontFamilyA: string;
     fontFamilyS: string;
     fontFamilyU: string;
     fontFamilyH: string;
-    hmarginD: number;
-    hmarginA: number;
-    hmarginS: number;
-    hmarginU: number;
-    hmarginH: number;
+    fontFamilyN: string;
+    marginLeftD: number;
+    marginLeftA: number;
+    marginLeftS: number;
+    marginLeftU: number;
+    marginLeftH: number;
+    marginLeftN: number;
+    marginRightD: number;
+    marginRightA: number;
+    marginRightS: number;
+    marginRightU: number;
+    marginRightH: number;
+    marginRightN: number;
     bmarginD: number;
     bmarginA: number;
     bmarginS: number;
     bmarginU: number;
     bmarginH: number;
+    bmarginN: number;
     transparencyD: number;
     transparencyA: number;
     transparencyS: number;
     transparencyU: number;
     transparencyH: number;
+    transparencyN: number;
 }
 export declare class LayoutSettings {
     tileShape: TileShape;
@@ -82,13 +105,15 @@ export declare class LayoutSettings {
     sizingMethod: TileSizingType;
     tileWidth: number;
     tileHeight: number;
+    autoHeight: boolean;
     tileAlignment: AlignmentType;
     tileLayout: TileLayoutType;
     rowLength: number;
     padding: number;
 }
-export declare class EffectSettings {
+export declare class EffectSettings implements TileCollectionStatedFormatObject {
     state: State;
+    statesUsed: StatesUsed;
     shapeRoundedCornerRadius: number;
     hoverStyling: boolean;
     shadow: boolean;
@@ -97,75 +122,90 @@ export declare class EffectSettings {
     shadowColorS: string;
     shadowColorU: string;
     shadowColorH: string;
+    shadowColorN: string;
     shadowTransparencyD: number;
     shadowTransparencyA: number;
     shadowTransparencyS: number;
     shadowTransparencyU: number;
     shadowTransparencyH: number;
+    shadowTransparencyN: number;
     shadowDirectionD: Direction;
     shadowDirectionA: Direction;
     shadowDirectionS: Direction;
     shadowDirectionU: Direction;
     shadowDirectionH: Direction;
+    shadowDirectionN: Direction;
     shadowDistanceD: number;
     shadowDistanceA: number;
     shadowDistanceS: number;
     shadowDistanceU: number;
     shadowDistanceH: number;
+    shadowDistanceN: number;
     shadowStrengthD: number;
     shadowStrengthA: number;
     shadowStrengthS: number;
     shadowStrengthU: number;
     shadowStrengthH: number;
+    shadowStrengthN: number;
     glow: boolean;
     glowColorD: string;
     glowColorA: string;
     glowColorS: string;
     glowColorU: string;
     glowColorH: string;
+    glowColorN: string;
     glowTransparencyD: number;
     glowTransparencyA: number;
     glowTransparencyS: number;
     glowTransparencyU: number;
     glowTransparencyH: number;
+    glowTransparencyN: number;
     glowStrengthD: number;
     glowStrengthA: number;
     glowStrengthS: number;
     glowStrengthU: number;
     glowStrengthH: number;
+    glowStrengthN: number;
 }
-export declare class IconSettings {
+export declare class IconSettings implements TileCollectionStatedFormatObject {
     icons: boolean;
     state: State;
+    statesUsed: StatesUsed;
     hoverStyling: boolean;
     placementD: IconPlacement;
     placementA: IconPlacement;
     placementS: IconPlacement;
     placementU: IconPlacement;
     placementH: IconPlacement;
+    placementN: IconPlacement;
     widthD: number;
     widthA: number;
     widthS: number;
     widthU: number;
     widthH: number;
+    widthN: number;
     hmarginD: number;
     hmarginA: number;
     hmarginS: number;
     hmarginU: number;
     hmarginH: number;
+    hmarginN: number;
     topMarginD: number;
     topMarginA: number;
     topMarginS: number;
     topMarginU: number;
     topMarginH: number;
+    topMarginN: number;
     bottomMarginD: number;
     bottomMarginA: number;
     bottomMarginS: number;
     bottomMarginU: number;
     bottomMarginH: number;
+    bottomMarginN: number;
     transparencyD: number;
     transparencyA: number;
     transparencyS: number;
     transparencyU: number;
     transparencyH: number;
+    transparencyN: number;
 }
