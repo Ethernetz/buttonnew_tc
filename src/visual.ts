@@ -37,7 +37,7 @@ import VisualObjectInstancesToPersist = powerbi.VisualObjectInstancesToPersist
 import DataViewPropertyValue = powerbi.DataViewPropertyValue
 import VisualObjectInstance = powerbi.VisualObjectInstance
 import VisualObjectInstanceEnumerationObject = powerbi.VisualObjectInstanceEnumerationObject
-
+import VisualUpdateType = powerbi.VisualUpdateType
 
 import { VisualSettings } from "./settings";
 import VisualObjectInstanceEnumeration = powerbi.VisualObjectInstanceEnumeration;
@@ -47,22 +47,22 @@ import EnumerateVisualObjectInstancesOptions = powerbi.EnumerateVisualObjectInst
 import * as d3 from "d3";
 
 import { PropertyGroupKeys } from './TilesCollection/interfaces'
-import { getPropertyStateNameArr, getObjectsToPersist} from './TilesCollectionUtlities/functions'
+import { getPropertyStateNameArr, getObjectsToPersist } from './TilesCollectionUtlities/functions'
 import { getCorrectPropertyStateName } from './TilesCollection/functions'
 import { SelectionManagerUnbound } from './SelectionManagerUnbound'
 
 type Selection<T extends d3.BaseType> = d3.Selection<T, any, any, any>;
 
 // import * as enums from "./enums"
-import {TileShape, IconPlacement, State, PresetStyle, TileLayoutType, TileSizingType} from './TilesCollection/enums'
+import { TileShape, IconPlacement, State, PresetStyle, TileLayoutType, TileSizingType } from './TilesCollection/enums'
 
-import {ButtonCollection, ButtonData} from './ButtonCollection'
+import { ButtonCollection, ButtonData } from './ButtonCollection'
 import { ContentFormatType } from "./TilesCollection/enums";
 
 export class Visual implements IVisual {
     public visualSettings: VisualSettings;
     public host: IVisualHost;
-   
+
     private svg: Selection<SVGElement>;
     private container: Selection<SVGElement>;
     public hoveredIndex: number
@@ -73,18 +73,25 @@ export class Visual implements IVisual {
     public currentPresetBaseColor: string = ""
 
     public visualElement: HTMLElement;
-    
+
+    public buttonsCollection: ButtonCollection
+
     constructor(options: VisualConstructorOptions) {
         this.selectionManagerUnbound = new SelectionManagerUnbound()
         this.host = options.host;
-        this.visualElement = options.element
 
         this.svg = d3.select(options.element)
             .append('svg')
-            .classed('button', true);
+            .classed('buttonstrip', true);
 
         this.container = this.svg.append("g")
             .classed('container', true);
+
+        this.buttonsCollection = new ButtonCollection()
+        this.buttonsCollection.svg = this.svg
+        this.buttonsCollection.container = this.container
+        this.buttonsCollection.visual = this
+        this.buttonsCollection.visualElement = options.element
     }
 
     public getEnumeratedStateProperties(propertyGroup: any, prefix?: string): { [propertyName: string]: DataViewPropertyValue } {
@@ -131,41 +138,35 @@ export class Visual implements IVisual {
             case "tile":
                 properties.state = settings.tile.state
                 properties.hoverStyling = settings.tile.hoverStyling
-                properties = {...properties, ...this.getEnumeratedStateProperties(settings.tile) }
+                properties = { ...properties, ...this.getEnumeratedStateProperties(settings.tile) }
                 break
             case "text": {
+                properties.show = settings.text.show
                 properties.state = settings.text.state
                 properties.hoverStyling = settings.text.hoverStyling
-                let iconPlacement = settings.icon[getCorrectPropertyStateName(settings.text.state, 'placement')] as IconPlacement
                 let filtered = Object.keys(settings.text)
-                    .filter(key => !(settings.icon.icons && iconPlacement != IconPlacement.above && key == "bmarginA"))
                     .reduce((obj, key) => {
                         obj[key] = settings.text[key]
                         return obj;
                     }, {})
 
-                properties = {...properties, ...this.getEnumeratedStateProperties(filtered) }
+                properties = { ...properties, ...this.getEnumeratedStateProperties(filtered) }
                 break
             }
-            case "icon":{
-                properties.icons = settings.icon.icons
-                let excludeWhenLeft = ["topMarginA", "bottomMarginA"]
-
-                if (settings.icon.icons) {
-                    let iconPlacement = settings.icon[getCorrectPropertyStateName(settings.icon.state, 'placement')] as IconPlacement
-                    properties.state = settings.icon.state
-                    properties.hoverStyling = settings.icon.hoverStyling
-                    let filtered = Object.keys(settings.icon)
-                        .filter(key => !(iconPlacement && excludeWhenLeft.indexOf(key) > -1))
-                        .reduce((obj, key) => {
-                            obj[key] = settings.icon[key]
-                            return obj;
-                        }, {})
+            case "icon": {
+                properties.show = settings.icon.show
+                properties.state = settings.icon.state
+                properties.hoverStyling = settings.icon.hoverStyling
+                let filtered = Object.keys(settings.icon)
+                    .reduce((obj, key) => {
+                        obj[key] = settings.icon[key]
+                        return obj;
+                    }, {})
 
 
-                    properties = { ...properties, ...this.getEnumeratedStateProperties(filtered) }
-                }
-                break}
+                properties = { ...properties, ...this.getEnumeratedStateProperties(filtered) }
+                break
+            }
             case "layout": {
                 let excludeWhenNotFixed = ["tileWidth", "tileHeight", "tileAlignment"]
 
@@ -174,12 +175,24 @@ export class Visual implements IVisual {
                         || key == settings.layout.tileShape + "Angle"
                         || key == settings.layout.tileShape + "Length")
                     .filter(key => !(settings.layout.sizingMethod != TileSizingType.fixed && excludeWhenNotFixed.indexOf(key) > -1))
+                    .filter(key => !(settings.layout.tileLayout != TileLayoutType.grid && key == "tilesPerRow"))
                     .reduce((obj, key) => {
                         obj[key] = settings.layout[key]
                         return obj;
                     }, {})
 
                 properties = { ...properties, ...filtered }
+                break
+            }
+            case "contentAlignment": {
+                properties.state = settings.contentAlignment.state
+                properties.hoverStyling = settings.contentAlignment.hoverStyling
+                let filtered = Object.keys(settings.contentAlignment)
+                    .reduce((obj, key) => {
+                        obj[key] = settings.contentAlignment[key]
+                        return obj;
+                    }, {})
+                properties = { ...properties, ...this.getEnumeratedStateProperties(filtered) }
                 break
             }
             case "effect":
@@ -196,9 +209,9 @@ export class Visual implements IVisual {
             case "content":
                 properties.icons = settings.content.icons
                 properties.state = settings.content.state
-                properties = { ...properties, ...this.getEnumeratedStateProperties(settings.content, "text")}
-                if(settings.content.icons)
-                    properties = { ...properties, ...this.getEnumeratedStateProperties(settings.content, "icon")}
+                properties = { ...properties, ...this.getEnumeratedStateProperties(settings.content, "text") }
+                if (settings.content.icons)
+                    properties = { ...properties, ...this.getEnumeratedStateProperties(settings.content, "icon") }
                 break
             case "bgimg":
                 properties.bgimgs = settings.bgimg.bgimgs
@@ -223,7 +236,7 @@ export class Visual implements IVisual {
         if (!(options && options.dataViews && options.dataViews[0]))
             return
         this.visualSettings = VisualSettings.parse(options.dataViews[0]) as VisualSettings
-        
+
         let objects: powerbi.VisualObjectInstancesToPersist = getObjectsToPersist(this.visualSettings,
             this.visualSettings.presetStyle.preset,
             this.visualSettings.presetStyle.preset != this.currentPresetStyle || this.visualSettings.presetStyle.color != this.currentPresetBaseColor)
@@ -231,45 +244,52 @@ export class Visual implements IVisual {
         this.currentPresetBaseColor = this.visualSettings.presetStyle.color
         if (objects.merge.length != 0)
             this.host.persistProperties(objects);
-        
 
 
-        let buttonsCollection = new ButtonCollection()
-
-        buttonsCollection.formatSettings.tile = this.visualSettings.tile
-        buttonsCollection.formatSettings.text = this.visualSettings.text
-        buttonsCollection.formatSettings.icon = this.visualSettings.icon
-        buttonsCollection.formatSettings.layout = this.visualSettings.layout
-        buttonsCollection.formatSettings.effect = this.visualSettings.effect
 
 
-        buttonsCollection.svg = this.svg
-        buttonsCollection.container = this.container
-        buttonsCollection.viewport = {
+        this.buttonsCollection.formatSettings.tile = this.visualSettings.tile
+        this.buttonsCollection.formatSettings.text = this.visualSettings.text
+        this.buttonsCollection.formatSettings.icon = this.visualSettings.icon
+        this.buttonsCollection.formatSettings.layout = this.visualSettings.layout
+        this.buttonsCollection.formatSettings.contentAlignment = this.visualSettings.contentAlignment
+        this.buttonsCollection.formatSettings.effect = this.visualSettings.effect
+
+        this.buttonsCollection.viewport = {
             height: options.viewport.height,
             width: options.viewport.width,
         }
-        buttonsCollection.visual = this
-        buttonsCollection.options = options
-        buttonsCollection.visualElement = this.visualElement
 
-        buttonsCollection.render(this.createButtonData())
+        if (options.type == VisualUpdateType.Resize || options.type == VisualUpdateType.ResizeEnd) {
+            this.buttonsCollection.onResize()
+        } else {
+            if (objects.merge.length == 0)
+                this.buttonsCollection.onDataChange(this.createButtonData())
         }
+    }
 
-        public createButtonData(): ButtonData[] {
+    public createButtonData(): ButtonData[] {
 
-            let isSelected: boolean = this.selectionManagerUnbound.getSelectionIndexes().indexOf(0) > -1
-            let buttonData: ButtonData[] =  [{
-                text: isSelected ? this.visualSettings.content.textS : this.visualSettings.content.textU ,
-                iconURL: isSelected ? this.visualSettings.content.iconS : this.visualSettings.content.iconU,
-                bgimgURL: this.visualSettings.bgimg.img,
-                contentFormatType: this.visualSettings.icon.icons ? ContentFormatType.text_icon : ContentFormatType.text,
-                isSelected: isSelected,
-                isHovered: this.hoveredIndex == 0
-            }];
-    
-            return buttonData
-        }
+        let contentFormatType = ContentFormatType.empty
+        if (this.visualSettings.text.show && !this.visualSettings.icon.show)
+            contentFormatType = ContentFormatType.text
+        if (!this.visualSettings.text.show && this.visualSettings.icon.show)
+            contentFormatType = ContentFormatType.icon
+        if (this.visualSettings.text.show && this.visualSettings.icon.show)
+            contentFormatType = ContentFormatType.text_icon
+
+        let isSelected: boolean = this.selectionManagerUnbound.getSelectionIndexes().indexOf(0) > -1
+        let buttonData: ButtonData[] = [{
+            text: isSelected ? this.visualSettings.content.textS : this.visualSettings.content.textU,
+            iconURL: isSelected ? this.visualSettings.content.iconS : this.visualSettings.content.iconU,
+            bgimgURL: this.visualSettings.bgimg.img,
+            contentFormatType: contentFormatType,
+            isSelected: isSelected,
+            isHovered: this.hoveredIndex == 0
+        }];
+
+        return buttonData
+    }
 
     private static parseSettings(dataView: DataView): VisualSettings {
         return <VisualSettings>VisualSettings.parse(dataView);

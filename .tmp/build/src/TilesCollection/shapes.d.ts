@@ -34,6 +34,7 @@ export declare class Parallelogram extends Shape implements Shape {
     get contentBoundingBox(): BoundingBox;
     get handles(): Handle[];
     static getAlterHPadding(height: number, angle: number): number;
+    static getExtraHSpace(height: number, angle: number): number;
 }
 export declare class ParallelogramVertical extends Shape implements Shape {
     static _z: number;
@@ -43,6 +44,7 @@ export declare class ParallelogramVertical extends Shape implements Shape {
     get contentBoundingBox(): BoundingBox;
     get handles(): Handle[];
     static getAlterVPadding(width: number, angle: number): number;
+    static getExtraVSpace(width: number, angle: number): number;
 }
 export declare class Chevron extends Shape implements Shape {
     static _z: number;
@@ -52,6 +54,7 @@ export declare class Chevron extends Shape implements Shape {
     get contentBoundingBox(): BoundingBox;
     get handles(): Handle[];
     static getAlterHPadding(height: number, angle: number): number;
+    static getExtraHSpace(height: number, angle: number): number;
 }
 export declare class ChevronVertical extends Shape implements Shape {
     static _z: number;
@@ -61,6 +64,7 @@ export declare class ChevronVertical extends Shape implements Shape {
     get contentBoundingBox(): BoundingBox;
     get handles(): Handle[];
     static getAlterVPadding(width: number, angle: number): number;
+    static getExtraVSpace(width: number, angle: number): number;
 }
 export declare class Pentagon extends Shape implements Shape {
     static _z: number;
@@ -68,6 +72,7 @@ export declare class Pentagon extends Shape implements Shape {
     get shapePath(): string;
     get contentBoundingBox(): BoundingBox;
     get handles(): Handle[];
+    static getExtraHSpace(): number;
 }
 export declare class Hexagon extends Shape implements Shape {
     static _z: number;
@@ -75,6 +80,7 @@ export declare class Hexagon extends Shape implements Shape {
     get shapePath(): string;
     get contentBoundingBox(): BoundingBox;
     get handles(): Handle[];
+    static getExtraHSpace(): number;
 }
 export declare class Ellipse extends Shape implements Shape {
     constructor(xPos: number, yPos: number, width: number, height: number);

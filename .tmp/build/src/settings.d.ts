@@ -30,6 +30,7 @@ export declare class ContentSettings implements TileCollectionStatedFormatObject
     iconU: string;
 }
 export declare class BgImgSettings {
+    bgimgs: boolean;
     img: string;
 }
 export declare class PresetStyleSettings {
@@ -41,7 +42,7 @@ export declare class VisualSettings extends DataViewObjectsParser {
     text: TextSettings;
     icon: IconSettings;
     layout: LayoutSettings;
-    effects: EffectSettings;
+    effect: EffectSettings;
     content: ContentSettings;
     bgimg: BgImgSettings;
     presetStyle: PresetStyleSettings;

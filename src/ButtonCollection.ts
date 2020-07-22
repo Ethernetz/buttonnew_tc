@@ -27,16 +27,16 @@ export class Button extends Tile {
 
     onTileClick() {
         this.visual.selectionManagerUnbound.select(this.i)
-        this.collection.render(this.visual.createButtonData()) 
+        this.collection.onStateChange(this.visual.createButtonData()) 
     }
 
     onTileMouseover() {
         this.visual.hoveredIndex = this.i
-        this.collection.render(this.visual.createButtonData()) 
+        this.collection.onStateChange(this.visual.createButtonData()) 
     }
     onTileMouseout() {
         this.visual.hoveredIndex = null
-        this.collection.render(this.visual.createButtonData()) 
+        this.collection.onStateChange(this.visual.createButtonData())  
     }
 }
 

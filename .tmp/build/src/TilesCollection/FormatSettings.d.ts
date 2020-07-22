@@ -1,4 +1,4 @@
-import { Viewport, StatesUsed } from './interfaces';
+import { StatesUsed } from './interfaces';
 import { AlignmentType, TileSizingType, TileLayoutType, TileShape, Direction, IconPlacement, State } from './enums';
 export declare class FormatSettings {
     tile: TileSettings;
@@ -6,7 +6,6 @@ export declare class FormatSettings {
     layout: LayoutSettings;
     effect: EffectSettings;
     icon: IconSettings;
-    viewport: Viewport;
 }
 export interface TileCollectionStatedFormatObject {
     state: State;
@@ -108,7 +107,7 @@ export declare class LayoutSettings {
     autoHeight: boolean;
     tileAlignment: AlignmentType;
     tileLayout: TileLayoutType;
-    rowLength: number;
+    tilesPerRow: number;
     padding: number;
 }
 export declare class EffectSettings implements TileCollectionStatedFormatObject {
