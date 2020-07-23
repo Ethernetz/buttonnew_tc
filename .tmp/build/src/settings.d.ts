@@ -12,6 +12,8 @@ export declare class IconSettings extends TileCollectionFormatSettings.IconSetti
 }
 export declare class LayoutSettings extends TileCollectionFormatSettings.LayoutSettings {
 }
+export declare class ContentAlignmentSettings extends TileCollectionFormatSettings.ContentAlignmentSettings {
+}
 export declare class EffectSettings extends TileCollectionFormatSettings.EffectSettings {
 }
 export declare class ContentSettings implements TileCollectionStatedFormatObject {
@@ -30,7 +32,7 @@ export declare class ContentSettings implements TileCollectionStatedFormatObject
     iconU: string;
 }
 export declare class BgImgSettings {
-    bgimgs: boolean;
+    show: boolean;
     img: string;
 }
 export declare class PresetStyleSettings {
@@ -42,6 +44,7 @@ export declare class VisualSettings extends DataViewObjectsParser {
     text: TextSettings;
     icon: IconSettings;
     layout: LayoutSettings;
+    contentAlignment: ContentAlignmentSettings;
     effect: EffectSettings;
     content: ContentSettings;
     bgimg: BgImgSettings;

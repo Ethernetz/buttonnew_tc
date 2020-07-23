@@ -11,7 +11,7 @@ import VisualObjectInstanceEnumeration = powerbi.VisualObjectInstanceEnumeration
 import EnumerateVisualObjectInstancesOptions = powerbi.EnumerateVisualObjectInstancesOptions;
 import { SelectionManagerUnbound } from './SelectionManagerUnbound';
 import { PresetStyle } from './TilesCollection/enums';
-import { ButtonData } from './ButtonCollection';
+import { ButtonCollection, ButtonData } from './ButtonCollection';
 export declare class Visual implements IVisual {
     visualSettings: VisualSettings;
     host: IVisualHost;
@@ -23,6 +23,7 @@ export declare class Visual implements IVisual {
     currentPresetStyle: PresetStyle;
     currentPresetBaseColor: string;
     visualElement: HTMLElement;
+    buttonsCollection: ButtonCollection;
     constructor(options: VisualConstructorOptions);
     getEnumeratedStateProperties(propertyGroup: any, prefix?: string): {
         [propertyName: string]: DataViewPropertyValue;

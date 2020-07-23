@@ -14,14 +14,21 @@ export declare class TilesCollection {
     universalTileData: UniversalTileData;
     tiles: Tile[];
     visualElement: HTMLElement;
-    maxBoundedTextHeight: number;
-    createTiles(tilesData: TileData[]): Tile[];
-    sameDataState(tdold: TileData, tdnew: TileData): boolean;
-    render(newTilesData: TileData[]): void;
-    clear(): void;
+    onDataChange(newTilesData: TileData[]): void;
+    setTextBounds(): void;
+    setMaxIconHeight(callback?: () => any): void;
+    onStateChange(newTilesData: TileData[]): void;
+    onResize(): void;
+    onScroll(): void;
+    setWindow(): void;
     draw(): void;
     createTile(i: number): Tile;
     createUniversalTileData(): UniversalTileData;
+    createTiles(tilesData: TileData[]): Tile[];
+    setNeedsToBeRendered(): void;
+    getMaxBoundedTextHeight(): number;
+    isSameDataState(tdold: TileData, tdnew: TileData): boolean;
+    clear(): void;
     onShift(): void;
     onShiftUp(): void;
 }

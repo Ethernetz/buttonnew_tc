@@ -6,14 +6,21 @@ export declare enum State {
     disabled = "disabled"
 }
 export declare enum ContentFormatType {
+    empty = "empty",
     text = "text",
+    icon = "icon",
     text_icon = "text_icon",
     text_text2 = "text_text2"
 }
-export declare enum AlignmentType {
+export declare enum HorizontalAlignmentType {
     center = "center",
     left = "left",
     right = "right"
+}
+export declare enum VerticalAlignmentType {
+    middle = "middle",
+    top = "top",
+    bottom = "bottom"
 }
 export declare enum TileSizingType {
     uniform = "uniform",
@@ -46,14 +53,12 @@ export declare enum Direction {
     top = "top",
     top_right = "top_right",
     right = "right",
-    custom = "custom",
-    empty = ""
+    custom = "custom"
 }
 export declare enum IconPlacement {
     left = "left",
     above = "above",
-    below = "below",
-    empty = ""
+    below = "below"
 }
 export declare enum PresetStyle {
     none = "none",

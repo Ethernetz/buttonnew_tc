@@ -1,9 +1,10 @@
 import { StatesUsed } from './interfaces';
-import { AlignmentType, TileSizingType, TileLayoutType, TileShape, Direction, IconPlacement, State } from './enums';
+import { HorizontalAlignmentType, TileSizingType, TileLayoutType, TileShape, Direction, IconPlacement, State, VerticalAlignmentType } from './enums';
 export declare class FormatSettings {
     tile: TileSettings;
     text: TextSettings;
     layout: LayoutSettings;
+    contentAlignment: ContentAlignmentSettings;
     effect: EffectSettings;
     icon: IconSettings;
 }
@@ -41,6 +42,7 @@ export declare class TileSettings implements TileCollectionStatedFormatObject {
     transparencyN: number;
 }
 export declare class TextSettings implements TileCollectionStatedFormatObject {
+    show: boolean;
     state: State;
     statesUsed: StatesUsed;
     hoverStyling: boolean;
@@ -50,12 +52,6 @@ export declare class TextSettings implements TileCollectionStatedFormatObject {
     colorU: string;
     colorH: string;
     colorN: string;
-    alignmentD: AlignmentType;
-    alignmentA: AlignmentType;
-    alignmentS: AlignmentType;
-    alignmentU: AlignmentType;
-    alignmentH: AlignmentType;
-    alignmentN: AlignmentType;
     fontSizeD: number;
     fontSizeA: number;
     fontSizeS: number;
@@ -68,24 +64,6 @@ export declare class TextSettings implements TileCollectionStatedFormatObject {
     fontFamilyU: string;
     fontFamilyH: string;
     fontFamilyN: string;
-    marginLeftD: number;
-    marginLeftA: number;
-    marginLeftS: number;
-    marginLeftU: number;
-    marginLeftH: number;
-    marginLeftN: number;
-    marginRightD: number;
-    marginRightA: number;
-    marginRightS: number;
-    marginRightU: number;
-    marginRightH: number;
-    marginRightN: number;
-    bmarginD: number;
-    bmarginA: number;
-    bmarginS: number;
-    bmarginU: number;
-    bmarginH: number;
-    bmarginN: number;
     transparencyD: number;
     transparencyA: number;
     transparencyS: number;
@@ -105,10 +83,63 @@ export declare class LayoutSettings {
     tileWidth: number;
     tileHeight: number;
     autoHeight: boolean;
-    tileAlignment: AlignmentType;
+    tileAlignment: HorizontalAlignmentType;
     tileLayout: TileLayoutType;
     tilesPerRow: number;
     padding: number;
+}
+export declare class ContentAlignmentSettings implements TileCollectionStatedFormatObject {
+    state: State;
+    statesUsed: StatesUsed;
+    hoverStyling: boolean;
+    iconPlacementD: IconPlacement;
+    iconPlacementA: IconPlacement;
+    iconPlacementS: IconPlacement;
+    iconPlacementU: IconPlacement;
+    iconPlacementH: IconPlacement;
+    iconPlacementN: IconPlacement;
+    iconTextPaddingD: number;
+    iconTextPaddingA: number;
+    iconTextPaddingS: number;
+    iconTextPaddingU: number;
+    iconTextPaddingH: number;
+    iconTextPaddingN: number;
+    horizontalAlignmentD: HorizontalAlignmentType;
+    horizontalAlignmentA: HorizontalAlignmentType;
+    horizontalAlignmentS: HorizontalAlignmentType;
+    horizontalAlignmentU: HorizontalAlignmentType;
+    horizontalAlignmentH: HorizontalAlignmentType;
+    horizontalAlignmentN: HorizontalAlignmentType;
+    verticalAlignmentD: VerticalAlignmentType;
+    verticalAlignmentA: VerticalAlignmentType;
+    verticalAlignmentS: VerticalAlignmentType;
+    verticalAlignmentU: VerticalAlignmentType;
+    verticalAlignmentH: VerticalAlignmentType;
+    verticalAlignmentN: VerticalAlignmentType;
+    leftMarginD: number;
+    leftMarginA: number;
+    leftMarginS: number;
+    leftMarginU: number;
+    leftMarginH: number;
+    leftMarginN: number;
+    rightMarginD: number;
+    rightMarginA: number;
+    rightMarginS: number;
+    rightMarginU: number;
+    rightMarginH: number;
+    rightMarginN: number;
+    topMarginD: number;
+    topMarginA: number;
+    topMarginS: number;
+    topMarginU: number;
+    topMarginH: number;
+    topMarginN: number;
+    bottomMarginD: number;
+    bottomMarginA: number;
+    bottomMarginS: number;
+    bottomMarginU: number;
+    bottomMarginH: number;
+    bottomMarginN: number;
 }
 export declare class EffectSettings implements TileCollectionStatedFormatObject {
     state: State;
@@ -167,40 +198,16 @@ export declare class EffectSettings implements TileCollectionStatedFormatObject 
     glowStrengthN: number;
 }
 export declare class IconSettings implements TileCollectionStatedFormatObject {
-    icons: boolean;
+    show: boolean;
     state: State;
     statesUsed: StatesUsed;
     hoverStyling: boolean;
-    placementD: IconPlacement;
-    placementA: IconPlacement;
-    placementS: IconPlacement;
-    placementU: IconPlacement;
-    placementH: IconPlacement;
-    placementN: IconPlacement;
     widthD: number;
     widthA: number;
     widthS: number;
     widthU: number;
     widthH: number;
     widthN: number;
-    hmarginD: number;
-    hmarginA: number;
-    hmarginS: number;
-    hmarginU: number;
-    hmarginH: number;
-    hmarginN: number;
-    topMarginD: number;
-    topMarginA: number;
-    topMarginS: number;
-    topMarginU: number;
-    topMarginH: number;
-    topMarginN: number;
-    bottomMarginD: number;
-    bottomMarginA: number;
-    bottomMarginS: number;
-    bottomMarginU: number;
-    bottomMarginH: number;
-    bottomMarginN: number;
     transparencyD: number;
     transparencyA: number;
     transparencyS: number;

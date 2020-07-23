@@ -207,16 +207,12 @@ export class Visual implements IVisual {
                     properties = { ...properties, ...this.getEnumeratedStateProperties(settings.effect, "glow") }
                 break
             case "content":
-                properties.icons = settings.content.icons
                 properties.state = settings.content.state
-                properties = { ...properties, ...this.getEnumeratedStateProperties(settings.content, "text") }
-                if (settings.content.icons)
-                    properties = { ...properties, ...this.getEnumeratedStateProperties(settings.content, "icon") }
+                properties = { ...properties, ...this.getEnumeratedStateProperties(settings.content, "text"),  ...this.getEnumeratedStateProperties(settings.content, "icon")}
                 break
             case "bgimg":
-                properties.bgimgs = settings.bgimg.bgimgs
-                if (settings.bgimg.bgimgs)
-                    properties = { ...properties, ...this.getEnumeratedStateProperties(settings.bgimg) }
+                properties.show = settings.bgimg.show
+                properties.img = settings.bgimg.img
                 break
             case "presetStyle":
                 properties = { ...properties, ...settings.presetStyle }
@@ -282,7 +278,7 @@ export class Visual implements IVisual {
         let buttonData: ButtonData[] = [{
             text: isSelected ? this.visualSettings.content.textS : this.visualSettings.content.textU,
             iconURL: isSelected ? this.visualSettings.content.iconS : this.visualSettings.content.iconU,
-            bgimgURL: this.visualSettings.bgimg.img,
+            bgimgURL: this.visualSettings.bgimg.show ? this.visualSettings.bgimg.img : "",
             contentFormatType: contentFormatType,
             isSelected: isSelected,
             isHovered: this.hoveredIndex == 0

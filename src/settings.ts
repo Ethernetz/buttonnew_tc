@@ -76,12 +76,12 @@ export class ContentSettings implements TileCollectionStatedFormatObject{
 }
 
 export class BgImgSettings{
-  public bgimgs: boolean = false
+  public show: boolean = false
   public img: string = ""
 }
 
 export class PresetStyleSettings{
-  public color: string = "#0D6ABF"
+  public color: string = "#41A4FF"
   public preset: PresetStyle = PresetStyle.none
 }
 
