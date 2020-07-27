@@ -1,5 +1,5 @@
 import { StatesUsed } from './interfaces';
-import { HorizontalAlignmentType, TileSizingType, TileLayoutType, TileShape, Direction, IconPlacement, State, VerticalAlignmentType } from './enums';
+import { HorizontalAlignmentType, TileSizingType, TileLayoutType, TileShape, Direction, IconPlacement, State, VerticalAlignmentType, GradientDirection } from './enums';
 export declare class FormatSettings {
     tile: TileSettings;
     text: TextSettings;
@@ -146,6 +146,20 @@ export declare class EffectSettings implements TileCollectionStatedFormatObject 
     statesUsed: StatesUsed;
     shapeRoundedCornerRadius: number;
     hoverStyling: boolean;
+    gradient: boolean;
+    reverseGradient: boolean;
+    gradientColorD: string;
+    gradientColorA: string;
+    gradientColorS: string;
+    gradientColorU: string;
+    gradientColorH: string;
+    gradientColorN: string;
+    gradientDirectionD: GradientDirection;
+    gradientDirectionA: GradientDirection;
+    gradientDirectionS: GradientDirection;
+    gradientDirectionU: GradientDirection;
+    gradientDirectionH: GradientDirection;
+    gradientDirectionN: GradientDirection;
     shadow: boolean;
     shadowColorD: string;
     shadowColorA: string;
@@ -196,6 +210,13 @@ export declare class EffectSettings implements TileCollectionStatedFormatObject 
     glowStrengthU: number;
     glowStrengthH: number;
     glowStrengthN: number;
+    lighting: boolean;
+    lightingStrengthD: number;
+    lightingStrengthA: number;
+    lightingStrengthS: number;
+    lightingStrengthU: number;
+    lightingStrengthH: number;
+    lightingStrengthN: number;
 }
 export declare class IconSettings implements TileCollectionStatedFormatObject {
     show: boolean;

@@ -55,6 +55,14 @@ export declare enum Direction {
     right = "right",
     custom = "custom"
 }
+export declare enum GradientDirection {
+    horizontal = "horizontal",
+    vertical = "vertical",
+    diagonal1 = "diagonal1",
+    diagonal2 = "diagonal2",
+    radial = "radial",
+    custom = "custom"
+}
 export declare enum IconPlacement {
     left = "left",
     above = "above",

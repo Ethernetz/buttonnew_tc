@@ -33,7 +33,13 @@ import {State, PresetStyle} from './TilesCollection/enums'
 import { TileCollectionStatedFormatObject } from "./TilesCollection/FormatSettings";
 import { StatesUsed } from "./TilesCollection/interfaces";
 
-export class TileSettings extends TileCollectionFormatSettings.TileSettings{
+
+export class TileFillSettings extends TileCollectionFormatSettings.TileFillSettings {
+  public showBgimg: boolean = false
+  public img: string = ""
+}
+
+export class TileStrokeSettings extends TileCollectionFormatSettings.TileStrokeSettings{
 }
 
 export class TextSettings extends TileCollectionFormatSettings.TextSettings{
@@ -42,8 +48,9 @@ export class TextSettings extends TileCollectionFormatSettings.TextSettings{
 export class IconSettings extends TileCollectionFormatSettings.IconSettings{
 }
 
-export class LayoutSettings extends TileCollectionFormatSettings.LayoutSettings{
+export class ShapeSettings extends TileCollectionFormatSettings.ShapeSettings{
 }
+
 
 export class ContentAlignmentSettings extends TileCollectionFormatSettings.ContentAlignmentSettings{
 }
@@ -75,24 +82,19 @@ export class ContentSettings implements TileCollectionStatedFormatObject{
   public iconU: string = null
 }
 
-export class BgImgSettings{
-  public show: boolean = false
-  public img: string = ""
-}
-
 export class PresetStyleSettings{
   public color: string = "#41A4FF"
   public preset: PresetStyle = PresetStyle.none
 }
 
 export class VisualSettings extends DataViewObjectsParser {
-  public tile: TileSettings = new TileSettings();
+  public tileFill: TileFillSettings = new TileFillSettings();
+  public tileStroke: TileStrokeSettings = new TileStrokeSettings();
   public text: TextSettings = new TextSettings();
   public icon: IconSettings = new IconSettings();
-  public layout: LayoutSettings = new LayoutSettings();
+  public shape: ShapeSettings = new ShapeSettings();
+  public content: ContentSettings = new ContentSettings();
   public contentAlignment: ContentAlignmentSettings = new ContentAlignmentSettings();
   public effect: EffectSettings = new EffectSettings();
-  public content: ContentSettings = new ContentSettings();
-  public bgimg: BgImgSettings = new BgImgSettings();
-  public presetStyle: PresetStyleSettings = new PresetStyleSettings();
+  public presetStyle: PresetStyleSettings = new PresetStyleSettings()
 }

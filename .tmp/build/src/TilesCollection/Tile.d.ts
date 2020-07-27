@@ -1,6 +1,6 @@
 import { FormatSettings, TextSettings, ContentAlignmentSettings, LayoutSettings, TileSettings, EffectSettings, IconSettings } from './FormatSettings';
 import { TileData } from './TileData';
-import { State, HorizontalAlignmentType, TileShape, Direction, ContentFormatType, IconPlacement, VerticalAlignmentType } from './enums';
+import { State, HorizontalAlignmentType, TileShape, Direction, ContentFormatType, IconPlacement, VerticalAlignmentType, GradientDirection } from './enums';
 import { Shape } from "./shapes";
 import { BaseType } from 'd3';
 import { TilesCollection } from './TilesCollection';
@@ -56,6 +56,16 @@ export declare class Tile {
     get tileFillOpacity(): number;
     get tileStroke(): string;
     get tileStrokeWidth(): number;
+    get tileHasGradient(): boolean;
+    get gradientColor(): string;
+    get gradientDirection(): GradientDirection;
+    get gradientCoordinates(): {
+        x1: number;
+        x2: number;
+        y1: number;
+        y2: number;
+    };
+    get reversGradientColors(): boolean;
     get layoutSettings(): LayoutSettings;
     get tilePadding(): number;
     get tileHPadding(): number;
@@ -94,6 +104,7 @@ export declare class Tile {
     get glowColor(): string;
     get glowTransparency(): number;
     get glowStrength(): number;
+    get lightingStrength(): number;
     get iconURL(): string;
     get iconSettings(): IconSettings;
     get iconWidth(): number;
