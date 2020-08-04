@@ -1,8 +1,10 @@
 import { StatesUsed } from './interfaces';
-import { HorizontalAlignmentType, TileSizingType, TileLayoutType, TileShape, Direction, IconPlacement, State, VerticalAlignmentType, GradientDirection } from './enums';
+import { HorizontalAlignmentType, TileSizingType, TileLayoutType, TileShape, Direction, IconPlacement, State, VerticalAlignmentType, GradientDirection, ShapeDirection } from './enums';
 export declare class FormatSettings {
-    tile: TileSettings;
+    tileStroke: TileStrokeSettings;
+    tileFill: TileFillSettings;
     text: TextSettings;
+    shape: ShapeSettings;
     layout: LayoutSettings;
     contentAlignment: ContentAlignmentSettings;
     effect: EffectSettings;
@@ -12,16 +14,10 @@ export interface TileCollectionStatedFormatObject {
     state: State;
     statesUsed: StatesUsed;
 }
-export declare class TileSettings implements TileCollectionStatedFormatObject {
+export declare class TileStrokeSettings implements TileCollectionStatedFormatObject {
     state: State;
     statesUsed: StatesUsed;
     hoverStyling: boolean;
-    colorD: string;
-    colorA: string;
-    colorS: string;
-    colorU: string;
-    colorH: string;
-    colorN: string;
     strokeD: string;
     strokeA: string;
     strokeS: string;
@@ -34,6 +30,17 @@ export declare class TileSettings implements TileCollectionStatedFormatObject {
     strokeWidthU: number;
     strokeWidthH: number;
     strokeWidthN: number;
+}
+export declare class TileFillSettings implements TileCollectionStatedFormatObject {
+    state: State;
+    statesUsed: StatesUsed;
+    hoverStyling: boolean;
+    colorD: string;
+    colorA: string;
+    colorS: string;
+    colorU: string;
+    colorH: string;
+    colorN: string;
     transparencyD: number;
     transparencyA: number;
     transparencyS: number;
@@ -70,15 +77,33 @@ export declare class TextSettings implements TileCollectionStatedFormatObject {
     transparencyU: number;
     transparencyH: number;
     transparencyN: number;
+    backgroundColorD: string;
+    backgroundColorA: string;
+    backgroundColorS: string;
+    backgroundColorU: string;
+    backgroundColorH: string;
+    backgroundColorN: string;
+    backgroundTransparencyD: number;
+    backgroundTransparencyA: number;
+    backgroundTransparencyS: number;
+    backgroundTransparencyU: number;
+    backgroundTransparencyH: number;
+    backgroundTransparencyN: number;
 }
-export declare class LayoutSettings {
+export declare class ShapeSettings {
     tileShape: TileShape;
     parallelogramAngle: number;
     chevronAngle: number;
     pentagonAngle: number;
     hexagonAngle: number;
+    arrowAngle: number;
+    arrowThicknessPercentage: number;
     tab_cutCornersLength: number;
     tab_cutCornerLength: number;
+    direction: ShapeDirection;
+    roundedCornerRadius: number;
+}
+export declare class LayoutSettings {
     sizingMethod: TileSizingType;
     tileWidth: number;
     tileHeight: number;
@@ -144,7 +169,6 @@ export declare class ContentAlignmentSettings implements TileCollectionStatedFor
 export declare class EffectSettings implements TileCollectionStatedFormatObject {
     state: State;
     statesUsed: StatesUsed;
-    shapeRoundedCornerRadius: number;
     hoverStyling: boolean;
     gradient: boolean;
     reverseGradient: boolean;
@@ -210,13 +234,6 @@ export declare class EffectSettings implements TileCollectionStatedFormatObject 
     glowStrengthU: number;
     glowStrengthH: number;
     glowStrengthN: number;
-    lighting: boolean;
-    lightingStrengthD: number;
-    lightingStrengthA: number;
-    lightingStrengthS: number;
-    lightingStrengthU: number;
-    lightingStrengthH: number;
-    lightingStrengthN: number;
 }
 export declare class IconSettings implements TileCollectionStatedFormatObject {
     show: boolean;

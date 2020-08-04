@@ -173,15 +173,16 @@ export class Visual implements IVisual {
                 break
             }
             case "shape": {
+                properties.tileShape = settings.shape.tileShape
                 let filtered = Object.keys(settings.shape)
-                    .filter(key => !(key.endsWith("Angle") || key.endsWith("Length"))
-                        || key == settings.shape.tileShape + "Angle"
-                        || key == settings.shape.tileShape + "Length")
+                    .filter(key => key.startsWith(settings.shape.tileShape) && key[settings.shape.tileShape.length] == key[settings.shape.tileShape.length].toUpperCase())
                     .reduce((obj, key) => {
                             obj[key] = settings.shape[key]
                             return obj;
                         }, {})
                 properties = {...properties, ...filtered}
+                properties.direction = settings.shape.direction
+                properties.roundedCornerRadius = settings.shape.roundedCornerRadius
             }
             case "contentAlignment": {
                 properties.state = settings.contentAlignment.state
@@ -195,7 +196,6 @@ export class Visual implements IVisual {
                 break
             }
             case "effect": {
-                properties.shapeRoundedCornerRadius = settings.effect.shapeRoundedCornerRadius
                 properties.state = settings.effect.state
                 properties.hoverStyling = settings.effect.hoverStyling
                 properties.gradient = settings.effect.gradient

@@ -4,13 +4,17 @@ import * as TileCollectionFormatSettings from "./TilesCollection/FormatSettings"
 import { State, PresetStyle } from './TilesCollection/enums';
 import { TileCollectionStatedFormatObject } from "./TilesCollection/FormatSettings";
 import { StatesUsed } from "./TilesCollection/interfaces";
-export declare class TileSettings extends TileCollectionFormatSettings.TileSettings {
+export declare class TileFillSettings extends TileCollectionFormatSettings.TileFillSettings {
+    showBgimg: boolean;
+    img: string;
+}
+export declare class TileStrokeSettings extends TileCollectionFormatSettings.TileStrokeSettings {
 }
 export declare class TextSettings extends TileCollectionFormatSettings.TextSettings {
 }
 export declare class IconSettings extends TileCollectionFormatSettings.IconSettings {
 }
-export declare class LayoutSettings extends TileCollectionFormatSettings.LayoutSettings {
+export declare class ShapeSettings extends TileCollectionFormatSettings.ShapeSettings {
 }
 export declare class ContentAlignmentSettings extends TileCollectionFormatSettings.ContentAlignmentSettings {
 }
@@ -31,22 +35,18 @@ export declare class ContentSettings implements TileCollectionStatedFormatObject
     iconS: string;
     iconU: string;
 }
-export declare class BgImgSettings {
-    show: boolean;
-    img: string;
-}
 export declare class PresetStyleSettings {
     color: string;
     preset: PresetStyle;
 }
 export declare class VisualSettings extends DataViewObjectsParser {
-    tile: TileSettings;
+    tileFill: TileFillSettings;
+    tileStroke: TileStrokeSettings;
     text: TextSettings;
     icon: IconSettings;
-    layout: LayoutSettings;
+    shape: ShapeSettings;
+    content: ContentSettings;
     contentAlignment: ContentAlignmentSettings;
     effect: EffectSettings;
-    content: ContentSettings;
-    bgimg: BgImgSettings;
     presetStyle: PresetStyleSettings;
 }

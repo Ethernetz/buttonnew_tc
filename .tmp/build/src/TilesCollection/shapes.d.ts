@@ -1,111 +1,129 @@
-import { BoundingBox, Handle } from "./interfaces";
+import { BoundingBox } from "./interfaces";
+import { ShapeDirection, TileLayoutType } from "./enums";
 export declare class Shape {
-    xPos: number;
-    yPos: number;
     width: number;
     height: number;
-    radius: number;
-    alterVPadding: number;
-    static handleFocused: boolean;
-    constructor(xPos: number, yPos: number, width: number, height: number, radius?: number);
+    roundedCornerRadius: number;
+    direction: ShapeDirection;
+    static alterPadding: boolean;
+    _shapePath: string;
+    _strokePath: string;
+    constructor(height: number, width: number, direction: ShapeDirection, roundedCornerRadius?: number, ...args: number[]);
+    get shapePath(): string;
+    get shapePathRight(): [string, ...number[]][];
     get strokePath(): string;
-    get handles(): any[];
+    get strokePathRight(): [string, ...number[]][];
+    get contentBoundingBox(): BoundingBox;
+    get contentBoundingBoxRight(): BoundingBox;
+    static getDimsWithoutContent(direction: ShapeDirection, height: number, width: number, ...args: number[]): {
+        width: number;
+        height: number;
+    };
+    static getDimsWithoutContentRight(...args: number[]): {
+        width: number;
+        height: number;
+    };
+    static getAutoPreference(layoutType: TileLayoutType): ShapeDirection;
 }
-export interface Shape {
-    xPos: number;
-    yPosd: number;
-    width: number;
-    height: number;
-    shapePath: string;
-    strokePath: string;
-    contentBoundingBox: BoundingBox;
-    handles: any[];
+export declare class Rectangle extends Shape {
+    constructor(height: number, width: number, direction: ShapeDirection, roundedCornerRadius: number);
+    get shapePathRight(): [string, ...number[]][];
 }
-export declare class Rectangle extends Shape implements Shape {
-    constructor(xPos: number, yPos: number, width: number, height: number, radius: number);
+export declare class Parallelogram extends Shape {
+    static alterPadding: boolean;
+    private z;
+    constructor(height: number, width: number, direction: ShapeDirection, angle: number, roundedCornerRadius: number);
+    get shapePathRight(): [string, ...number[]][];
+    get contentBoundingBoxRight(): BoundingBox;
+    static getDimsWithoutContentRight(height: number, width: number, angle: number): {
+        width: number;
+        height: number;
+    };
+    static getAutoPreference(layoutType: TileLayoutType): ShapeDirection;
+}
+export declare class Chevron extends Shape {
+    static alterPadding: boolean;
+    private z;
+    constructor(height: number, width: number, direction: ShapeDirection, angle: number, roundedCornerRadius: number);
+    get shapePathRight(): [string, ...number[]][];
+    get contentBoundingBoxRight(): BoundingBox;
+    static getDimsWithoutContentRight(height: number, width: number, angle: number): {
+        width: number;
+        height: number;
+    };
+    static getAutoPreference(layoutType: TileLayoutType): ShapeDirection;
+}
+export declare class Pentagon extends Shape {
+    private z;
+    constructor(height: number, width: number, direction: ShapeDirection, angle: number, roundedCornerRadius: number);
+    get shapePathRight(): [string, ...number[]][];
+    get contentBoundingBoxRight(): BoundingBox;
+    static getDimsWithoutContentRight(height: number, width: number, angle: number): {
+        width: number;
+        height: number;
+    };
+    static getAutoPreference(layoutType: TileLayoutType): ShapeDirection;
+}
+export declare class Hexagon extends Shape {
+    private z;
+    constructor(height: number, width: number, direction: ShapeDirection, angle: number, roundedCornerRadius: number);
+    get shapePathRight(): [string, ...number[]][];
+    get contentBoundingBoxRight(): BoundingBox;
+    static getDimsWithoutContentRight(height: number, width: number, angle: number): {
+        width: number;
+        height: number;
+    };
+    static getAutoPreference(layoutType: TileLayoutType): ShapeDirection;
+}
+export declare class Ellipse extends Shape {
+    constructor(height: number, width: number, direction: ShapeDirection);
+    get shapePathRight(): [string, ...number[]][];
     get shapePath(): string;
     get contentBoundingBox(): BoundingBox;
+    static getHorizontalNoContentRight(height: number, angle: number): number;
 }
-export declare class Parallelogram extends Shape implements Shape {
-    static _z: number;
-    angle: number;
-    constructor(xPos: number, yPos: number, width: number, height: number, angle: number, radius: number);
-    get shapePath(): string;
-    get contentBoundingBox(): BoundingBox;
-    get handles(): Handle[];
-    static getAlterHPadding(height: number, angle: number): number;
-    static getExtraHSpace(height: number, angle: number): number;
+export declare class Tab_CutCorners extends Shape {
+    private length;
+    constructor(height: number, width: number, direction: ShapeDirection, length: number, roundedCornerRadius: number);
+    get shapePathRight(): [string, ...number[]][];
+    static getAutoPreference(layoutType: TileLayoutType): ShapeDirection;
 }
-export declare class ParallelogramVertical extends Shape implements Shape {
-    static _z: number;
-    angle: number;
-    constructor(xPos: number, yPos: number, width: number, height: number, angle: number, radius: number);
-    get shapePath(): string;
-    get contentBoundingBox(): BoundingBox;
-    get handles(): Handle[];
-    static getAlterVPadding(width: number, angle: number): number;
-    static getExtraVSpace(width: number, angle: number): number;
+export declare class Tab_CutCorner extends Shape {
+    private length;
+    constructor(height: number, width: number, direction: ShapeDirection, length: number, roundedCornerRadius: number);
+    get shapePathRight(): [string, ...number[]][];
+    static getAutoPreference(layoutType: TileLayoutType): ShapeDirection;
 }
-export declare class Chevron extends Shape implements Shape {
-    static _z: number;
-    angle: number;
-    constructor(xPos: number, yPos: number, width: number, height: number, angle: number, radius: number);
-    get shapePath(): string;
-    get contentBoundingBox(): BoundingBox;
-    get handles(): Handle[];
-    static getAlterHPadding(height: number, angle: number): number;
-    static getExtraHSpace(height: number, angle: number): number;
+export declare class Tab_RoundedCorners extends Shape {
+    private length;
+    constructor(height: number, width: number, direction: ShapeDirection, roundedCornerRadius: number);
+    get shapePathRight(): [string, ...number[]][];
+    static getAutoPreference(layoutType: TileLayoutType): ShapeDirection;
 }
-export declare class ChevronVertical extends Shape implements Shape {
-    static _z: number;
-    angle: number;
-    constructor(xPos: number, yPos: number, width: number, height: number, angle: number, radius: number);
-    get shapePath(): string;
-    get contentBoundingBox(): BoundingBox;
-    get handles(): Handle[];
-    static getAlterVPadding(width: number, angle: number): number;
-    static getExtraVSpace(width: number, angle: number): number;
+export declare class Pill extends Shape {
+    constructor(height: number, width: number, direction: ShapeDirection, roundedCornerRadius: number);
+    get shapePathRight(): [string, ...number[]][];
+    get contentBoundingBoxRight(): BoundingBox;
+    static getDimsWithoutContentRight(height: number, width: number): {
+        width: number;
+        height: number;
+    };
+    static getAutoPreference(layoutType: TileLayoutType): ShapeDirection;
 }
-export declare class Pentagon extends Shape implements Shape {
-    static _z: number;
-    constructor(xPos: number, yPos: number, width: number, height: number, angle: number, radius: number);
-    get shapePath(): string;
-    get contentBoundingBox(): BoundingBox;
-    get handles(): Handle[];
-    static getExtraHSpace(height: number, angle: number): number;
+export declare class Triangle extends Shape {
+    constructor(height: number, width: number, direction: ShapeDirection, roundedCornerRadius: number);
+    get shapePathRight(): [string, ...number[]][];
+    static getAutoPreference(layoutType: TileLayoutType): ShapeDirection;
 }
-export declare class Hexagon extends Shape implements Shape {
-    static _z: number;
-    constructor(xPos: number, yPos: number, width: number, height: number, angle: number, radius: number);
-    get shapePath(): string;
-    get contentBoundingBox(): BoundingBox;
-    get handles(): Handle[];
-    static getExtraHSpace(height: number, angle: number): number;
-}
-export declare class Ellipse extends Shape implements Shape {
-    constructor(xPos: number, yPos: number, width: number, height: number);
-    get shapePath(): string;
-    get contentBoundingBox(): BoundingBox;
-}
-export declare class Tab_RoundedCorners extends Shape implements Shape {
-    constructor(xPos: number, yPos: number, width: number, height: number);
-    get shapePath(): string;
-    get contentBoundingBox(): BoundingBox;
-    get strokePath(): string;
-}
-export declare class Tab_CutCorners extends Shape implements Shape {
-    static _z: number;
-    constructor(xPos: number, yPos: number, width: number, height: number, length: number);
-    get shapePath(): string;
-    get contentBoundingBox(): BoundingBox;
-    get strokePath(): string;
-    get handles(): Handle[];
-}
-export declare class Tab_CutCorner extends Shape implements Shape {
-    static _z: number;
-    constructor(xPos: number, yPos: number, width: number, height: number, length: number);
-    get shapePath(): string;
-    get contentBoundingBox(): BoundingBox;
-    get strokePath(): string;
-    get handles(): Handle[];
+export declare class Arrow extends Shape {
+    private z;
+    private arrowThickness;
+    constructor(height: number, width: number, direction: ShapeDirection, angle: number, arrowThicknessPercentage: number, roundedCornerRadius: number);
+    get shapePathRight(): [string, ...number[]][];
+    get contentBoundingBoxRight(): BoundingBox;
+    static getDimsWithoutContentRight(height: number, width: number, angle: number, rodThickness: number): {
+        width: number;
+        height: number;
+    };
+    static getAutoPreference(layoutType: TileLayoutType): ShapeDirection;
 }

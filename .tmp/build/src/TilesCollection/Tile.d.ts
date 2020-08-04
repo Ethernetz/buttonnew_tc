@@ -1,10 +1,9 @@
-import { FormatSettings, TextSettings, ContentAlignmentSettings, LayoutSettings, TileSettings, EffectSettings, IconSettings } from './FormatSettings';
+import { FormatSettings, TextSettings, ContentAlignmentSettings, LayoutSettings, TileStrokeSettings, EffectSettings, IconSettings, ShapeSettings, TileFillSettings } from './FormatSettings';
 import { TileData } from './TileData';
-import { State, HorizontalAlignmentType, TileShape, Direction, ContentFormatType, IconPlacement, VerticalAlignmentType, GradientDirection } from './enums';
+import { State, HorizontalAlignmentType, Direction, ContentFormatType, IconPlacement, VerticalAlignmentType, GradientDirection } from './enums';
 import { Shape } from "./shapes";
 import { BaseType } from 'd3';
 import { TilesCollection } from './TilesCollection';
-import { Handle } from './interfaces';
 import { UniversalTileData } from './UniversalTileData';
 export declare class Tile {
     collection: TilesCollection;
@@ -22,6 +21,9 @@ export declare class Tile {
     get textSettings(): TextSettings;
     get textColor(): string;
     get textOpacity(): number;
+    get textBackgroundColor(): string;
+    get textBackgroundOpacity(): number;
+    get textBackground(): string;
     get fontSize(): number;
     get fontFamily(): string;
     get contentAlignmentSettings(): ContentAlignmentSettings;
@@ -39,7 +41,6 @@ export declare class Tile {
     get font2Family(): string;
     get allTextWidth(): number;
     get widthSpaceForText(): number;
-    get widthSpaceForAllText(): number;
     get inlineTextWidth(): number;
     get boundedTextWidth(): number;
     get maxIndividualBoundedTextHeight(): number;
@@ -51,7 +52,8 @@ export declare class Tile {
     get textContainerHeight(): number;
     get contentContainerWidth(): number;
     get text2(): string;
-    get tileSettings(): TileSettings;
+    get tileStrokeSettings(): TileStrokeSettings;
+    get tileFillSettings(): TileFillSettings;
     get tileFill(): string;
     get tileFillOpacity(): number;
     get tileStroke(): string;
@@ -67,21 +69,16 @@ export declare class Tile {
     };
     get reversGradientColors(): boolean;
     get layoutSettings(): LayoutSettings;
-    get tilePadding(): number;
-    get tileHPadding(): number;
-    get totalTileHPadding(): number;
-    get tileVPadding(): number;
-    get totalTileVPadding(): number;
     get tileWidth(): number;
     get dynamicExtraWidthPerTile(): number;
     get tileHeight(): number;
     get tileXpos(): number;
     get tileYpos(): number;
-    get tileShape(): TileShape;
+    get shapeSettings(): ShapeSettings;
+    get dynamicShape(): Shape;
     get shape(): Shape;
     get shapePath(): string;
     get shapeStrokePath(): string;
-    get handles(): Handle[];
     get alterHorizontalPadding(): number;
     get alterVerticalPadding(): number;
     get shapeExtraHSpace(): number;
@@ -91,7 +88,6 @@ export declare class Tile {
     get contentBoundingBoxXPos(): number;
     get contentBoundingBoxYPos(): number;
     get effectSettings(): EffectSettings;
-    get shapeRoundedCornerRadius(): number;
     get shadowColor(): string;
     get shadowTransparency(): number;
     get shadowDistance(): number;
@@ -104,7 +100,6 @@ export declare class Tile {
     get glowColor(): string;
     get glowTransparency(): number;
     get glowStrength(): number;
-    get lightingStrength(): number;
     get iconURL(): string;
     get iconSettings(): IconSettings;
     get iconWidth(): number;

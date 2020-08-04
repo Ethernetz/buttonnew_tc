@@ -23,7 +23,7 @@ export declare class Visual implements IVisual {
     currentPresetStyle: PresetStyle;
     currentPresetBaseColor: string;
     visualElement: HTMLElement;
-    buttonsCollection: ButtonCollection;
+    buttonCollection: ButtonCollection;
     constructor(options: VisualConstructorOptions);
     getEnumeratedStateProperties(propertyGroup: any, prefix?: string): {
         [propertyName: string]: DataViewPropertyValue;
