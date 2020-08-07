@@ -33,6 +33,7 @@ export declare class Tile {
     get contentMarginRight(): number;
     get contentMarginTop(): number;
     get contentMarginBottom(): number;
+    get contentRotation(): number;
     get totalContentHorizontalMargin(): number;
     get totalContentVerticalMargin(): number;
     get text2Color(): string;
@@ -75,14 +76,12 @@ export declare class Tile {
     get tileXpos(): number;
     get tileYpos(): number;
     get shapeSettings(): ShapeSettings;
+    get shapeRotation(): number;
+    get shapeRotationScale(): number;
     get dynamicShape(): Shape;
     get shape(): Shape;
     get shapePath(): string;
     get shapeStrokePath(): string;
-    get alterHorizontalPadding(): number;
-    get alterVerticalPadding(): number;
-    get shapeExtraHSpace(): number;
-    get shapeExtraVSpace(): number;
     get contentBoundingBoxHeight(): number;
     get contentBoundingBoxWidth(): number;
     get contentBoundingBoxXPos(): number;

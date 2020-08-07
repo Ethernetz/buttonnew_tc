@@ -75,10 +75,38 @@ export declare class Hexagon extends Shape {
     };
     static getAutoPreference(layoutType: TileLayoutType): ShapeDirection;
 }
-export declare class Ellipse extends Shape {
+export declare class Trapezoid extends Shape {
+    private z;
+    constructor(height: number, width: number, direction: ShapeDirection, angle: number, roundedCornerRadius: number);
+    get shapePathRight(): [string, ...number[]][];
+    get contentBoundingBoxRight(): BoundingBox;
+    static getDimsWithoutContentRight(height: number, width: number, angle: number): {
+        width: number;
+        height: number;
+    };
+    static getAutoPreference(layoutType: TileLayoutType): ShapeDirection;
+}
+export declare class Octagon extends Shape {
+    private hypotenuse;
+    private side;
+    constructor(height: number, width: number, direction: ShapeDirection, roundedCornerRadius: number);
+    get shapePathRight(): [string, ...number[]][];
+    get contentBoundingBoxRight(): BoundingBox;
+    static getDimsWithoutContentRight(height: number, width: number): {
+        width: number;
+        height: number;
+    };
+    static getAutoPreference(layoutType: TileLayoutType): ShapeDirection;
+}
+export declare class Diamond extends Shape {
+    constructor(height: number, width: number, direction: ShapeDirection, roundedCornerRadius: number);
+    get shapePathRight(): [string, ...number[]][];
+}
+export declare class Oval extends Shape {
     constructor(height: number, width: number, direction: ShapeDirection);
     get shapePathRight(): [string, ...number[]][];
     get shapePath(): string;
+    get strokePath(): string;
     get contentBoundingBox(): BoundingBox;
     static getHorizontalNoContentRight(height: number, angle: number): number;
 }
@@ -110,10 +138,14 @@ export declare class Pill extends Shape {
     };
     static getAutoPreference(layoutType: TileLayoutType): ShapeDirection;
 }
-export declare class Triangle extends Shape {
+export declare class IsocTriangle extends Shape {
     constructor(height: number, width: number, direction: ShapeDirection, roundedCornerRadius: number);
     get shapePathRight(): [string, ...number[]][];
     static getAutoPreference(layoutType: TileLayoutType): ShapeDirection;
+}
+export declare class RightTriangle extends Shape {
+    constructor(height: number, width: number, direction: ShapeDirection, roundedCornerRadius: number);
+    get shapePathRight(): [string, ...number[]][];
 }
 export declare class Arrow extends Shape {
     private z;
@@ -121,9 +153,22 @@ export declare class Arrow extends Shape {
     constructor(height: number, width: number, direction: ShapeDirection, angle: number, arrowThicknessPercentage: number, roundedCornerRadius: number);
     get shapePathRight(): [string, ...number[]][];
     get contentBoundingBoxRight(): BoundingBox;
-    static getDimsWithoutContentRight(height: number, width: number, angle: number, rodThickness: number): {
+    static getDimsWithoutContentRight(height: number, width: number, angle: number, arrowThicknessPercentage: number): {
         width: number;
         height: number;
     };
     static getAutoPreference(layoutType: TileLayoutType): ShapeDirection;
+}
+export declare class Line extends Shape {
+    constructor(height: number, width: number, direction: ShapeDirection);
+    get shapePathRight(): [string, ...number[]][];
+}
+export declare class Speechbubble_Rectangle extends Shape {
+    constructor(height: number, width: number, direction: ShapeDirection, roundedCornerRadius: number);
+    get shapePathRight(): [string, ...number[]][];
+    get contentBoundingBoxRight(): BoundingBox;
+    static getDimsWithoutContentRight(height: number, width: number): {
+        width: number;
+        height: number;
+    };
 }

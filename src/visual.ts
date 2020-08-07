@@ -183,6 +183,8 @@ export class Visual implements IVisual {
                 properties = {...properties, ...filtered}
                 properties.direction = settings.shape.direction
                 properties.roundedCornerRadius = settings.shape.roundedCornerRadius
+                properties.rotation = settings.shape.rotation
+                break
             }
             case "contentAlignment": {
                 properties.state = settings.contentAlignment.state

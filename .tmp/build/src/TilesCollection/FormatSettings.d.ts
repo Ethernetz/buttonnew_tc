@@ -96,12 +96,14 @@ export declare class ShapeSettings {
     chevronAngle: number;
     pentagonAngle: number;
     hexagonAngle: number;
+    trapezoidAngle: number;
     arrowAngle: number;
     arrowThicknessPercentage: number;
     tab_cutCornersLength: number;
     tab_cutCornerLength: number;
     direction: ShapeDirection;
     roundedCornerRadius: number;
+    rotation: number;
 }
 export declare class LayoutSettings {
     sizingMethod: TileSizingType;
@@ -165,6 +167,12 @@ export declare class ContentAlignmentSettings implements TileCollectionStatedFor
     bottomMarginU: number;
     bottomMarginH: number;
     bottomMarginN: number;
+    rotationD: number;
+    rotationA: number;
+    rotationS: number;
+    rotationU: number;
+    rotationH: number;
+    rotationN: number;
 }
 export declare class EffectSettings implements TileCollectionStatedFormatObject {
     state: State;
